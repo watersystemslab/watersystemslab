@@ -211,10 +211,10 @@
       border-bottom: 1px solid var(--border);
     }
     .pub-year:first-child { margin-top: 0; }
-    .pub-item { padding: 0.7rem 0; border-bottom: 1px solid #ede8e2; font-size: 0.85rem; }
+    .pub-item { padding: 0.35rem 0; border-bottom: 1px solid #ede8e2; font-size: 0.85rem; }
     .pub-item:last-child { border-bottom: none; }
-    .pub-title { font-weight: 500; color: var(--text); display: block; margin-bottom: 0.2rem; line-height: 1.45; }
-    .pub-authors { color: var(--muted); display: block; margin-bottom: 0.15rem; font-size: 0.82rem; }
+    .pub-title { font-weight: 500; color: var(--text); display: block; margin-bottom: 0.1rem; line-height: 1.4; }
+    .pub-authors { color: var(--muted); display: block; margin-bottom: 0.08rem; font-size: 0.82rem; }
     .pub-journal { color: var(--muted); font-style: italic; font-size: 0.82rem; }
     .pub-journal a { color: var(--faint); font-style: normal; font-size: 0.78rem; }
     .topic-section { margin-bottom: 2rem; }
@@ -489,17 +489,48 @@
 
   For an item with a link:
     <div class="news-item"><span class="news-date">Mon YYYY</span><span><a href="URL">Link text</a> rest of text.</span></div>
+
+  The first 5 items show automatically. Anything beyond that is
+  hidden until the user clicks "Show more". No changes needed here
+  to make that work — just keep adding items at the top as usual.
   ============================================================
   -->
+  <div id="news-list">
   <div class="news-item"><span class="news-date">Jan 2026</span><span><a href="https://www.umass.edu/engineering/news/gabriel-mesole-bracey-award">Congratulations to Gabriel</a> for being honored with the Professor John H. Bracey, Jr. Emerging Leader Award at UMass Amherst.</span></div>
   <div class="news-item"><span class="news-date">Dec 2025</span><span>Emily presented at the 24×7 Water Supply Workshop, Centre for Multi-Disciplinary Development Research, Dharwad.</span></div>
   <div class="news-item"><span class="news-date">Oct 2025</span><span>Kevine presents a poster on his experiments on household water storage at the UNC Water and Health Conference.</span></div>
   <div class="news-item"><span class="news-date">Aug 2025</span><span>Emily begins Fulbright-Nehru fellowship at IIT-Bombay (2025–2026), conducting fieldwork on IWS in Indian cities in collaboration with the <a href="https://sites.google.com/view/srishti-lab-iitb/srishti?authuser=0">Srishti Lab</a>.</span></div>
   <div class="news-item"><span class="news-date">Aug 2025</span><span>Ciara presents two papers at CCWI 2025 (Sheffield): an IWS modeling framework and a novel US public water system typology.</span></div>
   <div class="news-item"><span class="news-date">Jun 2025</span><span>Gabriel presented at IWA Health-Related Water Microbiology, Netherlands.</span></div>
+  </div>
+  <button id="news-toggle" onclick="toggleNews()" style="margin-top:0.6rem; background:none; border:none; color:var(--accent); font-size:0.8rem; cursor:pointer; padding:0;">Show more ↓</button>
+  <script>
+  (function() {
+    var VISIBLE = 5;
+    function toggleNews() {
+      var items = document.querySelectorAll('#news-list .news-item');
+      var btn = document.getElementById('news-toggle');
+      var hidden = items[VISIBLE] && items[VISIBLE].style.display === 'none';
+      for (var i = VISIBLE; i < items.length; i++) {
+        items[i].style.display = hidden ? '' : 'none';
+      }
+      btn.textContent = hidden ? 'Show less ↑' : 'Show more ↓';
+    }
+    // expose globally for onclick
+    window.toggleNews = toggleNews;
+    // init: hide items beyond VISIBLE
+    document.addEventListener('DOMContentLoaded', function() {
+      var items = document.querySelectorAll('#news-list .news-item');
+      var btn = document.getElementById('news-toggle');
+      var hasExtra = items.length > VISIBLE;
+      for (var i = VISIBLE; i < items.length; i++) {
+        items[i].style.display = 'none';
+      }
+      if (!hasExtra) btn.style.display = 'none';
+    });
+  })();
+  </script>
   
-  
-</div>
 
 <!-- RESEARCH -->
 <div class="page" id="page-research">
@@ -616,7 +647,7 @@
   <hr style="border:none;border-top:1px solid var(--border);margin-bottom:1.5rem;">
 
   <div class="uva-person">
-    <div class="uva-photo"><img src="images/headshot-emily.JPG" alt="Emily Kumpel"></div>
+    <div class="uva-photo"><img src="images/headshot-emily.jpg" alt="Emily Kumpel"></div>
     <div class="uva-info">
       <h3>Emily Kumpel</h3>
       <p class="uva-role">Associate Professor, Civil &amp; Environmental Engineering, UMass Amherst<br>
@@ -654,7 +685,7 @@
   </div>
 
   <div class="uva-person">
-    <div class="uva-photo"><img src="images/headshot-gabriel.jpeg" alt="Gabriel"></div>
+    <div class="uva-photo"><img src="images/headshot-gabriel.jpg" alt="Gabriel"></div>
     <div class="uva-info">
       <h3>Gabriel Mesole</h3>
       <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2021–</p>
@@ -672,7 +703,7 @@
   </div>
 
   <div class="uva-person">
-    <div class="uva-photo"><img src="images/headshot-kevine.JPG" alt="Kevine"></div>
+    <div class="uva-photo"><img src="images/headshot-kevine.jpg" alt="Kevine"></div>
     <div class="uva-info">
       <h3>Kevine Odira</h3>
       <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2023–</p>
@@ -745,7 +776,9 @@
 <div class="page" id="page-publications">
   <h1>Publications</h1>
   <p style="font-size:0.82rem; margin-bottom:0.5rem;"><a href="http://scholar.google.com/citations?user=3p8_njYAAAAJ">Full list on Google Scholar</a></p>
-  <p style="font-size:0.82rem; margin-bottom:1.5rem; color:var(--muted);">If you would like a copy of a paper and cannot get access, please <a href="https://www.umass.edu/engineering/about/directory/emily-kumpel">email me</a>.</p>
+  <p style="font-size:0.82rem; margin-bottom:0.5rem; color:var(--muted);">If you would like a copy of a paper and cannot get access, please <a href="https://www.umass.edu/engineering/about/directory/emily-kumpel">email me</a>.</p>
+  <!-- LAST UPDATED — change the date below when you add new publications -->
+  <p style="font-size:0.78rem; color:var(--faint); margin-bottom:1.5rem;">Last updated: February 2026</p>
   <!--
   ============================================================
   PUBLICATIONS — two views: By Year and By Topic
@@ -946,7 +979,9 @@
 <!-- PROJECTS -->
 <div class="page" id="page-projects">
   <h1>Projects</h1>
-  <p class="muted" style="margin-bottom:2.5rem;">Current and past funded research projects.</p>
+  <p class="muted" style="margin-bottom:0.5rem;">Current and past funded research projects.</p>
+  <!-- LAST UPDATED — change the date below when you add or move projects -->
+  <p style="font-size:0.78rem; color:var(--faint); margin-bottom:2.5rem;">Last updated: February 2026</p>
   <!--
   ============================================================
   PROJECTS — two sections: Current and Past Projects
@@ -989,7 +1024,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img"><img src="images/image-iws.HEIC" alt="IWS fieldwork, India"></div>
+      <div class="project-img"><img src="images/image-iws.jpg" alt="IWS fieldwork, India"></div>
       <h3>Intermittent Water Supply</h3>
       <p class="proj-meta">Fulbright-Nehru / IIT-Bombay · 2025–2026</p>
       <p>Field studies across Indian cities measuring IWS characteristics, predictability, and water quality, and how supply variability affects household coping strategies and health outcomes. Active sites: Hubli-Dharwad, Nashik, Solapur, Mumbai, Navi Mumbai.</p>
@@ -997,7 +1032,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img"><img src="images/image-inframapping" alt="Parcel-level infrastructure map"></div>
+      <div class="project-img"><img src="images/image-inframapping.png" alt="Parcel-level infrastructure map"></div>
       <h3>Mapping Wastewater and Water Infrastructure</h3>
       <p class="proj-meta">California State Water Board · MassDEP · NSF · 2022–2026</p>
       <p>Two related threads: (1) Developing machine learning methods to predict water and wastewater service type at the land parcel scale — filling critical data gaps for equity assessment and policy, working with state agencies in Massachusetts, California, North Carolina, and the Gulf States. (2) Developing a novel typology for classifying US public water systems to better understand system diversity and enable more targeted deployment of treatment technologies and regulatory support.</p>
@@ -1005,7 +1040,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img"><img src="images/image-sourcewater.HEIC" alt="Reservoir, Massachusetts"></div>
+      <div class="project-img"><img src="images/image-sourcewater.jpg" alt="Reservoir, Massachusetts"></div>
       <h3>Source Water Quality</h3>
       <p class="proj-meta">Massachusetts DCR · MWRA · 2018–ongoing</p>
       <p>Long-term monitoring of water quality in DCR reservoirs serving the greater Boston area. Studies contaminant dynamics, road salt impacts, watershed land use, and seasonal variability in microbial and chemical indicators. Partnership with DCR Division of Water Supply Protection.</p>
@@ -1042,7 +1077,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img"><img src="images/image-tower.HEIC" alt="Small system water infrastructure"></div>
+      <div class="project-img"><img src="images/image-tower.jpg" alt="Small system water infrastructure"></div>
       <h3>Point-of-Use and Point-of-Entry Treatment for Small Systems</h3>
       <p class="proj-meta">Water Quality Research Foundation · 2020–2025</p>
       <p>Comparing POU/POE treatment to centralized options for small system SDWA compliance using a triple-bottom-line framework — economic, environmental, and exposure costs and benefits. Reviews the current state of POU/POE technology and regulatory pathways.</p>
@@ -1050,7 +1085,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img"><img src="images/image-alaska.HEIC" alt="Rural Alaska community"></div>
+      <div class="project-img"><img src="images/image-alaska.jpeg" alt="Rural Alaska community"></div>
       <h3>Water and Sanitation in Rural Alaska</h3>
       <p class="proj-meta">NSF NNA · 2023–2026</p>
       <p>Community-engaged research on water and sanitation infrastructure, challenges, and resilience in remote Alaska Native communities facing climate-driven change.</p>
@@ -1063,7 +1098,7 @@
   <div class="project-grid past-grid">
 
     <div class="project-card">
-      <div class="project-img"><img src="images/image-handpump.HEIC" alt="Water supply, India"></div>
+      <div class="project-img"><img src="images/image-handpump.jpg" alt="Water supply, India"></div>
       <h3>Upgrading Intermittent to Continuous Water Supply in Hubli-Dharwad</h3>
       <p class="proj-meta">NSF · UC Berkeley · 2009–2016</p>
       <p>Multi-dimensional evaluation of the conversion from intermittent to 24×7 piped water supply in Hubli-Dharwad, Karnataka. Covered water quality, household water use, health outcomes, and governance.</p>
@@ -1071,7 +1106,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img"><img src="images/image-karinafieldlab.HEIC" alt="Lab-scale pipeloop setup"></div>
+      <div class="project-img"><img src="images/image-karinafieldlab.jpg" alt="Lab-scale pipeloop setup"></div>
       <h3>Lab-Scale IWS Experiments</h3>
       <p class="proj-meta">NSF CBET · 2018–2023</p>
       <p>Designed and operated a pilot-scale pipeloop to experimentally characterize how supply intermittency and pressure variation affect contamination intrusion, microbial communities, and DBP formation.</p>
@@ -1079,7 +1114,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img"><img src="images/image-mexico.HEIC" alt="Mexico City water storage tank"></div>
+      <div class="project-img"><img src="images/image-mexico.jpeg" alt="Mexico City water storage tank"></div>
       <h3>Household Water Management in Mexico City</h3>
       <p class="proj-meta">World Bank · NSF · 2018–2021</p>
       <p>How households in Mexico City cope with severe intermittent supply through water storage, treatment, and sourcing decisions. Combined survey data, water quality testing, and decision modeling.</p>
