@@ -363,9 +363,9 @@
     <div>
       <h1>Water Systems Lab at UMass Amherst</h1>
       <p style="font-family:'Lora',serif; font-size:1.05rem; font-style:italic; color:var(--muted); margin-bottom:1.5rem; margin-top:-0.3rem;">Water for the Common Wealth</p>
-      <div style="width:100%; aspect-ratio:16/9; background:var(--card-bg); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--faint); font-size:0.78rem; margin-bottom:1.2rem;">[ photo ]</div>
-      <p>The Water Systems Lab (Kumpel Lab) is an environmental engineering research group at the University of Massachusetts Amherst studying water infrastructure, systems, and people, from intermittently supplied cities in India to small systems in rural Alaska and Massachusetts.</p>
+      <p>The Water Systems Lab, led by <a href="https://www.umass.edu/engineering/about/directory/emily-kumpel">Dr. Emily Kumpel</a> in <a href="https://www.umass.edu/engineering/cee">Civil and Environmental Engineering</a> at the University of Massachusetts Amherst, is a research group studying water infrastructure, systems, and people, from intermittently supplied cities in India to small systems in rural Alaska and Massachusetts.</p>
       <p>Our work connects technical measurements of water quality and supply reliability to public health outcomes, regulatory practice, and policy.</p>
+      <div style="width:100%; aspect-ratio:16/9; background:var(--card-bg); border:1px solid var(--border); margin-top:1.2rem; overflow:hidden;"><img src="images/image-group1.jpg" alt="Water Systems Lab group" style="width:100%; height:100%; object-fit:cover;"></div>
     </div>
     <div class="home-meta">
       <div><strong>PI</strong><br><a onclick="showPage('people')">Emily Kumpel</a></div>
@@ -402,37 +402,6 @@
       <strong>People</strong>
       <span>Current team, affiliated researchers, and alumni</span>
     </a>
-  </div>
-
-  <h2>What we've found</h2>
-  <!--
-  ============================================================
-  KEY FINDINGS — update these when you have new flagship results
-  Each card has:
-    finding-text: the finding in quotes (italic serif)
-    finding-link: citation + arrow linking to the paper
-
-  To add/replace a finding, copy a finding-card block and edit.
-  Keep to 4 cards for layout balance (2x2 grid).
-  ============================================================
-  -->
-  <div class="findings-grid">
-    <div class="finding-card">
-      <p class="finding-text">"Predictability of water supply matters as much as total hours — households cope better with reliable intermittency than unpredictable supply."</p>
-      <a href="#" class="finding-link">Thomson et al. 2024 &rarr;</a>
-    </div>
-    <div class="finding-card">
-      <p class="finding-text">"Wastewater intrusion during supply gaps changes the types and concentrations of disinfection byproducts formed — a previously undercharacterized risk."</p>
-      <a href="https://doi.org/10.1371/journal.pwat.0000273" class="finding-link" target="_blank">Roberts et al. 2025 &rarr;</a>
-    </div>
-    <div class="finding-card">
-      <p class="finding-text">"Machine learning can predict wastewater service type at the parcel level, revealing infrastructure gaps invisible in official records."</p>
-      <a href="#" class="finding-link">da Luz, Taneja &amp; Kumpel 2025 &rarr;</a>
-    </div>
-    <div class="finding-card">
-      <p class="finding-text">"Point-of-use treatment can be cost-competitive with centralized options for small systems facing SDWA compliance — but regulatory pathways remain a barrier."</p>
-      <a href="#" class="finding-link">Lane et al. 2025 &rarr;</a>
-    </div>
   </div>
 
   <h2>Where we work</h2>
@@ -481,20 +450,13 @@
       var a = { radius:7, fillColor:"#3d6e8a", color:"#fff", weight:1.5, fillOpacity:0.9 };
       var p = { radius:6, fillColor:"#a09890", color:"#fff", weight:1.5, fillOpacity:0.7 };
       [
-        [15.35,75.13,"Hubli-Dharwad, India","IWS field studies, water quality, 24\u00d77 transition (PhD research + ongoing)","active"],
-        [19.08,72.88,"Mumbai / Navi Mumbai, India","IWS fieldwork, Fulbright-Nehru fellowship 2025\u201326","active"],
-        [19.99,73.79,"Nashik, India","IWS fieldwork 2025\u201326","active"],
-        [17.68,75.90,"Solapur, India","IWS fieldwork 2025\u201326","active"],
+        [15.35,75.13,"Karnataka, India","IWS field studies, water quality, 24\u00d77 transition (PhD research + ongoing)","active"],
+        [19.50,75.50,"Maharashtra, India","IWS fieldwork, Fulbright-Nehru fellowship 2025\u201326","active"],
         [42.36,-72.52,"Massachusetts, USA","MassDEP technical assistance, small systems, lead in schools, reservoir water quality, well mapping","active"],
         [64.20,-153.00,"Rural Alaska, USA","WASH conditions in Alaska Native communities (NSF NNA)","active"],
         [36.17,-119.74,"California, USA","Statewide wastewater needs assessment (California State Water Board)","active"],
         [-0.02,37.90,"Kenya","Water quality in intermittent water supply systems","active"],
-        [-1.29,36.82,"Nairobi, Kenya","Aquaya Institute: water quality monitoring, water safety plans","past"],
-        [19.43,-99.13,"Mexico City, Mexico","Household water decisions under intermittent supply","past"],
-        [4.82,7.03,"Port Harcourt, Nigeria","Urban water services in fragile states (World Bank)","past"],
-        [6.30,-10.80,"Monrovia, Liberia","Urban water services in fragile states (World Bank)","past"],
-        [14.69,-17.44,"Senegal","ICT and water quality data management","past"],
-        [-0.69,34.77,"Kisii, Kenya","Sanitary surveys and water quality testing","past"]
+        [19.43,-99.13,"Mexico City, Mexico","Household water decisions under intermittent supply","past"]
       ].forEach(function(s){
         L.circleMarker([s[0],s[1]], s[4]==="active"?a:p)
           .bindPopup("<strong>"+s[2]+"</strong><br><span style=\"font-size:0.81rem;color:#666\">"+s[3]+"</span>")
@@ -529,12 +491,13 @@
     <div class="news-item"><span class="news-date">Mon YYYY</span><span><a href="URL">Link text</a> rest of text.</span></div>
   ============================================================
   -->
-  <div class="news-item"><span class="news-date">Jan 2026</span><span><a href="https://www.umass.edu/engineering/news/gabriel-mesole-bracey-award">Congratulations to Gabriel Mesole</a> for being honored with the Professor John H. Bracey, Jr. Emerging Leader Award at UMass Amherst.</span></div>
+  <div class="news-item"><span class="news-date">Jan 2026</span><span><a href="https://www.umass.edu/engineering/news/gabriel-mesole-bracey-award">Congratulations to Gabriel</a> for being honored with the Professor John H. Bracey, Jr. Emerging Leader Award at UMass Amherst.</span></div>
   <div class="news-item"><span class="news-date">Dec 2025</span><span>Emily presented at the 24×7 Water Supply Workshop, Centre for Multi-Disciplinary Development Research, Dharwad.</span></div>
+  <div class="news-item"><span class="news-date">Oct 2025</span><span>Kevine presents a poster on his experiments on household water storage at the UNC Water and Health Conference.</span></div>
   <div class="news-item"><span class="news-date">Aug 2025</span><span>Emily begins Fulbright-Nehru fellowship at IIT-Bombay (2025–2026), conducting fieldwork on IWS in Indian cities in collaboration with the <a href="https://sites.google.com/view/srishti-lab-iitb/srishti?authuser=0">Srishti Lab</a>.</span></div>
-  <div class="news-item"><span class="news-date">Aug 2025</span><span>Ciara Little presents two papers at CCWI 2025 (Sheffield): an IWS modeling framework and a novel US public water system typology.</span></div>
-  <div class="news-item"><span class="news-date">Jun 2025</span><span>Gabriel Mesole presented at IWA Health-Related Water Microbiology, Netherlands.</span></div>
-  <div class="news-item"><span class="news-date">May 2025</span><span>Four presentations at AEESP Annual Conference, Duke University.</span></div>
+  <div class="news-item"><span class="news-date">Aug 2025</span><span>Ciara presents two papers at CCWI 2025 (Sheffield): an IWS modeling framework and a novel US public water system typology.</span></div>
+  <div class="news-item"><span class="news-date">Jun 2025</span><span>Gabriel presented at IWA Health-Related Water Microbiology, Netherlands.</span></div>
+  
   
 </div>
 
@@ -593,7 +556,7 @@
       <p>Culture-based enumeration, short- and long-read sequencing, metagenomics, AMR profiling, pathogen detection, AOC characterization, regulated and unregulated DBP quantification.</p>
     </div>
     <div class="approach-item">
-      <h4>Field campaigns</h4>
+      <h4>Field data collection</h4>
       <p>Household surveys, water quality sampling (tap and storage), pressure and flow monitoring, longitudinal data collection — from rural Alaska to urban India.</p>
     </div>
     <div class="approach-item">
@@ -601,8 +564,8 @@
       <p>Graph neural networks, random forests, spatial models applied to infrastructure service prediction, compliance risk identification, and large regulatory/geospatial datasets.</p>
     </div>
     <div class="approach-item">
-      <h4>Hydraulic &amp; system modeling</h4>
-      <p>Pressure dynamics and contamination risk in distribution systems; household-level decision models for water storage and treatment under supply uncertainty.</p>
+      <h4>Lab experiments</h4>
+      <p>Scaled-down physical models of water systems for controlled testing — including a recirculating pipe loop that mimics intermittent distribution systems, and bench-scale household storage models for studying contamination and treatment under realistic supply conditions.</p>
     </div>
     <div class="approach-item">
       <h4>Technical assistance</h4>
@@ -653,51 +616,28 @@
   <hr style="border:none;border-top:1px solid var(--border);margin-bottom:1.5rem;">
 
   <div class="uva-person">
-    <div class="uva-photo">photo</div>
+    <div class="uva-photo"><img src="images/headshot-emily.JPG" alt="Emily Kumpel"></div>
     <div class="uva-info">
       <h3>Emily Kumpel</h3>
       <p class="uva-role">Associate Professor, Civil &amp; Environmental Engineering, UMass Amherst<br>
       Visiting Associate Professor, IIT-Bombay (Fulbright-Nehru Scholar, 2025–26)<br>
-      <a href="https://www.umass.edu/engineering/about/directory/emily-kumpel">ekumpel@umass.edu</a> ·
       <a href="http://scholar.google.com/citations?user=3p8_njYAAAAJ">Google Scholar</a> ·
-      <a href="#">CV</a></p>
+      <a href="https://umass-my.sharepoint.com/:b:/r/personal/ekumpel_umass_edu/Documents/PublicSharing/Kumpel-CV.pdf?csf=1&web=1&e=FcDA4P">CV</a></p>
       <p>Ph.D., Civil and Environmental Engineering, UC Berkeley, 2013<br>
       M.S., Civil and Environmental Engineering, UC Berkeley, 2007<br>
       B.S., Mechanical Engineering, Johns Hopkins University, 2006</p>
-      <p>Dr. Kumpel is an Associate Professor in Civil and Environmental Engineering at UMass Amherst, currently on sabbatical as a Fulbright-Nehru Scholar and Visiting Associate Professor at IIT-Bombay (2025–26). Her research advances sustainable and equitable drinking water systems through innovative approaches to water quality, household storage, and data science. She has over 45 peer-reviewed publications and leads comprehensive drinking water assistance programs for Massachusetts. Before joining UMass in 2017, she spent three years as a Senior Research Scientist at the Aquaya Institute in Nairobi, Kenya. <a href="#">Full bio →</a></p>
-    </div>
-  </div>
-
-  <h3 class="uva-section">Affiliated Researchers</h3>
-
-  <div class="uva-person">
-    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-    <div class="uva-info">
-      <h3>Dr. Nelson da Luz</h3>
-      <p class="uva-role">Research Assistant Professor, CEE, UMass Amherst<br>
-      <a href="#">LinkedIn</a> · <a href="#">Website</a></p>
-      <p>Nelson's research focuses on wastewater infrastructure mapping, drinking water quality monitoring program design, and data-driven approaches to water system management. He completed his Ph.D. with the Water Systems Lab in 2022 and remains an active collaborator.</p>
-    </div>
-  </div>
-
-  <div class="uva-person">
-    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-    <div class="uva-info">
-      <h3>Dr. Karina Chavarria</h3>
-      <p class="uva-role">Independent Consultant · Postdoctoral Scholar (ASEE Fellow) in the group, 2021–2024<br>
-      <a href="#">LinkedIn</a> · <a href="#">Website</a></p>
-      <p>Karina was a postdoctoral scholar in the group from 2021–2024 and continues as a collaborator and independent consultant. Her work focuses on water quality in water systems, including microbial communities from source to tap, disinfection byproducts (DBPs), antimicrobial resistance (AMR), and water quality under intermittent water supply, and the current state of point-of-use and point-of-entry treatment in the United States.</p>
+      <p>Dr. Kumpel is an Associate Professor in Civil and Environmental Engineering at UMass Amherst, currently on sabbatical as a Fulbright-Nehru Scholar and Visiting Associate Professor at IIT-Bombay (2025–26). She leads comprehensive drinking water assistance programs for Massachusetts. Before joining UMass in 2017, she spent three years as a Senior Research Scientist at the Aquaya Institute in Nairobi, Kenya.</p>
     </div>
   </div>
 
   <h3 class="uva-section">Postdoctoral Scholars</h3>
 
   <div class="uva-person">
-    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-photo"><img src="images/headshot-nathalie.jpg" alt="Nathalie Thelamaque"></div>
     <div class="uva-info">
       <h3>Dr. Nathalie Thelamaque</h3>
       <p class="uva-role">Postdoctoral Scholar, CEE, UMass Amherst, 2024–<br>
-      <a href="#">LinkedIn</a> · <a href="#">Website</a></p>
+      <a href="https://scholar.google.com/citations?user=aTmaxOMAAAAJ&hl=en&oi=ao">Google Scholar</a> · <a href="#">LinkedIn</a></p>
             <p>Nathalie's research focuses on water and sanitation conditions in rural Alaska, using qualitative research methods to understand water access and equity in remote Alaska Native communities.</p>
     </div>
   </div>
@@ -705,16 +645,16 @@
   <h3 class="uva-section">Ph.D. Students</h3>
 
   <div class="uva-person">
-    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-photo"><img src="images/headshot-ciara.jpg" alt="Ciara Little"></div>
     <div class="uva-info">
       <h3>Ciara Little</h3>
       <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2021–</p>
-      <p>Ciara's research develops typology and modeling frameworks for intermittent water supply systems and classification approaches for US public water systems.</p>
+      <p>Ciara's research develops classification approaches for US public water systems and modeling frameworks to understand intermittent water supply systems.</p>
     </div>
   </div>
 
   <div class="uva-person">
-    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-photo"><img src="images/headshot-gabriel.jpeg" alt="Gabriel"></div>
     <div class="uva-info">
       <h3>Gabriel Mesole</h3>
       <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2021–</p>
@@ -723,7 +663,7 @@
   </div>
 
   <div class="uva-person">
-    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-photo"><img src="images/headshot-poonam.jpeg" alt="Poonam"></div>
     <div class="uva-info">
       <h3>Poonam Tajanpure</h3>
       <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2022–</p>
@@ -732,7 +672,7 @@
   </div>
 
   <div class="uva-person">
-    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-photo"><img src="images/headshot-kevine.JPG" alt="Kevine"></div>
     <div class="uva-info">
       <h3>Kevine Odira</h3>
       <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2023–</p>
@@ -741,11 +681,33 @@
   </div>
 
   <div class="uva-person">
-    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-photo"><img src="images/headshot-mitchel.jpg" alt="Mitchel"></div>
     <div class="uva-info">
       <h3>Mitchel Ghantous <span style="font-weight:300;font-size:0.85em">(co-advised)</span></h3>
       <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2024–</p>
       <p>Mitchel's research focuses on disinfection byproducts in drinking water systems.</p>
+    </div>
+  </div>
+
+  <h3 class="uva-section">Affiliated Researchers</h3>
+
+  <div class="uva-person">
+    <div class="uva-photo"><img src="images/headshot-nelson.png" alt="Nelson da Luz"></div>
+    <div class="uva-info">
+      <h3>Dr. Nelson da Luz</h3>
+      <p class="uva-role">Research Assistant Professor, CEE, UMass Amherst<br>
+      <a href="https://scholar.google.com/citations?user=D4ZtTdkAAAAJ&hl=en&oi=sra">Google Scholar</a> · <a href="#">LinkedIn</a></p>
+      <p>Nelson's research focuses on wastewater infrastructure mapping, drinking water quality monitoring program design, and data-driven approaches to water system management. He completed his Ph.D. with the Water Systems Lab in 2022 and remains an active collaborator.</p>
+    </div>
+  </div>
+
+  <div class="uva-person">
+    <div class="uva-photo"><img src="images/headshot-karina.jpg" alt="Karina Chavarria"></div>
+    <div class="uva-info">
+      <h3>Dr. Karina Chavarria</h3>
+      <p class="uva-role">Independent Consultant · Postdoctoral Scholar (ASEE Fellow) in the group, 2021–2024<br>
+      <a href="https://scholar.google.com/citations?hl=en&user=8K9_gnIAAAAJ">Google Scholar</a> · <a href="#">LinkedIn</a></p>
+      <p>Karina was a postdoctoral scholar in the group from 2021–2024 and continues as a collaborator and independent consultant. Her work focuses on water quality in water systems, including microbial communities from source to tap, disinfection byproducts (DBPs), antimicrobial resistance (AMR), and water quality under intermittent water supply, and the current state of point-of-use and point-of-entry treatment in the United States.</p>
     </div>
   </div>
 
@@ -760,23 +722,19 @@
       <tr><td>Karina Chavarria</td><td>Postdoc (ASEE)</td><td>2021–2024</td><td>DBPs, AMR, IWS water quality, POU/POE</td><td>Independent Consultant; Affiliated Researcher, UMass Amherst</td></tr>
       <tr><td>Nelson da Luz</td><td>Postdoc / Ph.D.</td><td>2019–2024</td><td>Wastewater infrastructure mapping; water quality monitoring program design</td><td>Research Assistant Professor, UMass Amherst</td></tr>
       <tr><td>Kaycie Lane</td><td>Postdoc</td><td>2020–2022</td><td>Small systems, POU/POE treatment, trucked water</td><td>Assistant Professor of Practice, University of Nebraska Lincoln</td></tr>
-      <tr><td>Liam Amery</td><td>MS</td><td>2024</td><td>Arsenic exposure predictions for private well users in MA</td><td>—</td></tr>
-      <tr><td>Thomas Roberts</td><td>MS</td><td>2023</td><td>Disinfection byproducts in intermittent water supply</td><td>Research Fellow, UMass Amherst</td></tr>
+      <tr><td>Liam Amery</td><td>BS, MS</td><td>2022, 2024</td><td>Lead contamination in MA school drinking water; arsenic exposure predictions for private well users in MA</td><td>Environmental Engineer, Indian Health Service</td></tr>
+      <tr><td>Thomas Roberts</td><td>BS, MS</td><td>2021, 2023</td><td>PFAS in MA drinking water; disinfection byproducts in intermittent water supply</td><td>Research Fellow, UMass Amherst</td></tr>
       <tr><td>Carlos Veras</td><td>MS</td><td>2023</td><td>Total coliform variability in a drinking water reservoir</td><td>Water Resources Engineer, Kleinfelder</td></tr>
-      <tr><td>Hannah Wharton</td><td>MS</td><td>2022</td><td>E. coli fate and transport in intermittent vs. continuous supply</td><td>Ph.D. student, UC Berkeley</td></tr>
-      <tr><td>Bridgette Charlebois</td><td>MS</td><td>2021</td><td>First flush volumes in rainwater catchment systems</td><td>Adjudication Engineer, Utah Dept. of Natural Resources</td></tr>
+      <tr><td>Hannah Wharton</td><td>BS, MS</td><td>2019, 2022</td><td>E. coli removal in POU treatment; E. coli fate and transport in intermittent vs. continuous supply</td><td>Ph.D. student, UC Berkeley</td></tr>
+      <tr><td>Bridgette Charlebois</td><td>BS, MS</td><td>2019, 2021</td><td>First flush volumes in rainwater catchment systems</td><td>Adjudication Engineer, Utah Dept. of Natural Resources</td></tr>
       <tr><td>Mariam Alkattan</td><td>MS</td><td>2021</td><td>Water quality in intermittent supply — model pipeloop</td><td>—</td></tr>
       <tr><td>Savannah Wunderlich</td><td>MS</td><td>2020</td><td>Household water decisions under IWS in Mexico City</td><td>—</td></tr>
       <tr><td>LeighAnn D'Andrea</td><td>MS</td><td>2019</td><td>Drinking water quality test kits for citizen scientists</td><td>Project Programmer, US Air Force</td></tr>
-      <tr><td>Ella Prabhakar</td><td>Undergrad (IS)</td><td>2025</td><td>—</td><td>—</td></tr>
-      <tr><td>Jacqueline White</td><td>Undergrad (IS)</td><td>2023–24</td><td>—</td><td>—</td></tr>
-      <tr><td>Liam Amery</td><td>Undergrad (Honors)</td><td>2022</td><td>Lead contamination in MA school drinking water</td><td>MS, UMass Amherst</td></tr>
-      <tr><td>Tom Roberts</td><td>Undergrad (Honors)</td><td>2021</td><td>PFAS in MA drinking water</td><td>MS, UMass Amherst</td></tr>
-      <tr><td>Hannah Wharton</td><td>Undergrad (Honors)</td><td>2019</td><td>E. coli removal in POU treatment</td><td>MS → Ph.D., UC Berkeley</td></tr>
-      <tr><td>Farah Rawas</td><td>Undergrad (IS)</td><td>2018</td><td>Utility-reported vs. household-experienced supply hours</td><td>MS, University of British Columbia</td></tr>
-      <tr><td>Akshay Delity</td><td>Undergrad (IS)</td><td>2019</td><td>CFD model of water storage tank geometries</td><td>Peace Corps Panama</td></tr>
-      <tr><td>Bridgette Charlebois</td><td>Undergrad (IS)</td><td>2019</td><td>Pipeloop construction</td><td>MS, UMass Amherst</td></tr>
-      <tr><td>Mitchel Ghantous</td><td>Undergrad (IS)</td><td>2019</td><td>—</td><td>Ph.D. student, UMass Amherst</td></tr>
+      <tr><td>Jacqueline White</td><td>BS, MS</td><td>2024, 2025</td><td>—</td><td>—</td></tr>
+      <tr><td>Ella Prabhakar</td><td>BS</td><td>2025</td><td>Water quality while in storage</td><td>—</td></tr>
+      <tr><td>Mitchel Ghantous</td><td>BS</td><td>2019</td><td>—</td><td>Ph.D. student, UMass Amherst</td></tr>
+      <tr><td>Bridgette Charlebois</td><td>BS, MS</td><td>2019, 2021</td><td>First flush volumes in rainwater catchment systems</td><td>Adjudication Engineer, Utah Dept. of Natural Resources</td></tr>
+      <tr><td>Farah Rawas</td><td>BS</td><td>2018</td><td>Utility-reported vs. household-experienced supply hours</td><td>MS, University of British Columbia</td></tr>
     </tbody>
   </table>
 
@@ -786,7 +744,8 @@
 <!-- PUBLICATIONS -->
 <div class="page" id="page-publications">
   <h1>Publications</h1>
-  <p style="font-size:0.82rem; margin-bottom:1.5rem;"><a href="http://scholar.google.com/citations?user=3p8_njYAAAAJ">Full list on Google Scholar</a></p>
+  <p style="font-size:0.82rem; margin-bottom:0.5rem;"><a href="http://scholar.google.com/citations?user=3p8_njYAAAAJ">Full list on Google Scholar</a></p>
+  <p style="font-size:0.82rem; margin-bottom:1.5rem; color:var(--muted);">If you would like a copy of a paper and cannot get access, please <a href="https://www.umass.edu/engineering/about/directory/emily-kumpel">email me</a>.</p>
   <!--
   ============================================================
   PUBLICATIONS — two views: By Year and By Topic
@@ -1022,7 +981,7 @@
   <div class="project-grid">
 
     <div class="project-card">
-      <div class="project-img">[ photo — household storage tank, India ]</div>
+      <div class="project-img"><img src="images/image-hhstorage.JPG" alt="Household water storage tank, India"></div>
       <h3>Household Water Storage</h3>
       <p class="proj-meta">NSF CAREER · 2024–2029</p>
       <p>Examines how storage practices shape microbial water quality and whether interventions can convert household tanks from a contamination risk into a reliable buffer. Combines lab studies, field studies, and modeling. Field sites include India, Mexico City, and Kenya.</p>
@@ -1030,7 +989,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — IWS fieldwork, India ]</div>
+      <div class="project-img"><img src="images/image-iws.HEIC" alt="IWS fieldwork, India"></div>
       <h3>Intermittent Water Supply</h3>
       <p class="proj-meta">Fulbright-Nehru / IIT-Bombay · 2025–2026</p>
       <p>Field studies across Indian cities measuring IWS characteristics, predictability, and water quality, and how supply variability affects household coping strategies and health outcomes. Active sites: Hubli-Dharwad, Nashik, Solapur, Mumbai, Navi Mumbai.</p>
@@ -1038,15 +997,15 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — parcel map / GIS ]</div>
+      <div class="project-img"><img src="images/image-inframapping" alt="Parcel-level infrastructure map"></div>
       <h3>Mapping Wastewater and Water Infrastructure</h3>
-      <p class="proj-meta">California State Water Board · MassDEP · 2022–2026</p>
-      <p>Developing machine learning methods to predict water and wastewater service type at the land parcel scale — filling critical data gaps for equity assessment and policy. Working with state agencies in Massachusetts, California, North Carolina, and the Gulf States.</p>
+      <p class="proj-meta">California State Water Board · MassDEP · NSF · 2022–2026</p>
+      <p>Two related threads: (1) Developing machine learning methods to predict water and wastewater service type at the land parcel scale — filling critical data gaps for equity assessment and policy, working with state agencies in Massachusetts, California, North Carolina, and the Gulf States. (2) Developing a novel typology for classifying US public water systems to better understand system diversity and enable more targeted deployment of treatment technologies and regulatory support.</p>
       <div class="project-links"><a href="#">da Luz, Taneja, Kumpel 2025</a><a href="#">NeurIPS UrbanAI 2025</a></div>
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — reservoir, Massachusetts ]</div>
+      <div class="project-img"><img src="images/image-sourcewater.HEIC" alt="Reservoir, Massachusetts"></div>
       <h3>Source Water Quality</h3>
       <p class="proj-meta">Massachusetts DCR · MWRA · 2018–ongoing</p>
       <p>Long-term monitoring of water quality in DCR reservoirs serving the greater Boston area. Studies contaminant dynamics, road salt impacts, watershed land use, and seasonal variability in microbial and chemical indicators. Partnership with DCR Division of Water Supply Protection.</p>
@@ -1054,7 +1013,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — water quality lab / DBP analysis ]</div>
+      <div class="project-img"><img src="images/image-wqindistsys.JPG" alt="Water quality in distribution systems"></div>
       <h3>Water Quality in Distribution Systems</h3>
       <p class="proj-meta">EPA (CO-DOWN Consortium) · ASEE Postdoctoral Fellowship · 2021–2026</p>
       <p>Examining how distribution system conditions — wastewater intrusion, source water variation, and intermittency — affect disinfection byproduct formation and microbial communities. Includes lab-scale pipeloop experiments, field sampling, and analysis of regulatory compliance data.</p>
@@ -1062,7 +1021,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — Massachusetts water systems ]</div>
+      <div class="project-img"><img src="images/image-quabbinsamp.jpg" alt="Massachusetts water system sampling"></div>
       <h3>Safe Drinking Water Act Technical Assistance (MassDEP)</h3>
       <p class="proj-meta">Massachusetts Department of Environmental Protection · 2021–2027 · ~$7.2M</p>
       <p>Comprehensive technical assistance to <a href="https://www.mass.gov/topics/drinking-water" target="_blank">MassDEP</a>'s Drinking Water Program across multiple interagency service agreements. Supports small water system compliance, PFAS and emerging contaminants in small and disadvantaged communities, drinking water data infrastructure, and well mapping. Partners include Tobiason, da Luz, and McBeath.</p>
@@ -1072,18 +1031,18 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — school drinking water fountain ]</div>
+      <div class="project-img"><img src="images/images-lead" alt="Lead in school drinking water fountain"></div>
       <h3>Lead in Schools &amp; Lead Service Line Programs (MassDEP)</h3>
       <p class="proj-meta">Massachusetts Department of Environmental Protection · 2022–2026 · ~$2.2M</p>
       <p>Two parallel programs supporting Massachusetts utilities and regulators on lead in drinking water. The Lead in Schools/EECF program supports testing and remediation in K-12 schools and early education facilities statewide. The lead service line program assists small and non-transient water systems with LSL inventory development and replacement planning. Research outputs include statewide lead data analysis and predictive modeling of LSL locations.</p>
       <div class="project-links">
         <a href="#">Amery et al. 2023</a>
-        <a href="https://www.mass.gov/lead-drinking-water" target="_blank">MassDEP Lead Program</a>
+        <a href="https://www.mass.gov/water-smart" target="_blank">MassDEP and UMass Water-Smart program</a>
       </div>
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — point-of-use filter ]</div>
+      <div class="project-img"><img src="images/image-tower.HEIC" alt="Small system water infrastructure"></div>
       <h3>Point-of-Use and Point-of-Entry Treatment for Small Systems</h3>
       <p class="proj-meta">Water Quality Research Foundation · 2020–2025</p>
       <p>Comparing POU/POE treatment to centralized options for small system SDWA compliance using a triple-bottom-line framework — economic, environmental, and exposure costs and benefits. Reviews the current state of POU/POE technology and regulatory pathways.</p>
@@ -1091,7 +1050,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — rural Alaska community ]</div>
+      <div class="project-img"><img src="images/image-alaska.HEIC" alt="Rural Alaska community"></div>
       <h3>Water and Sanitation in Rural Alaska</h3>
       <p class="proj-meta">NSF NNA · 2023–2026</p>
       <p>Community-engaged research on water and sanitation infrastructure, challenges, and resilience in remote Alaska Native communities facing climate-driven change.</p>
@@ -1104,7 +1063,7 @@
   <div class="project-grid past-grid">
 
     <div class="project-card">
-      <div class="project-img">[ photo — water supply, India ]</div>
+      <div class="project-img"><img src="images/image-handpump.HEIC" alt="Water supply, India"></div>
       <h3>Upgrading Intermittent to Continuous Water Supply in Hubli-Dharwad</h3>
       <p class="proj-meta">NSF · UC Berkeley · 2009–2016</p>
       <p>Multi-dimensional evaluation of the conversion from intermittent to 24×7 piped water supply in Hubli-Dharwad, Karnataka. Covered water quality, household water use, health outcomes, and governance.</p>
@@ -1112,7 +1071,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — pipeloop lab setup ]</div>
+      <div class="project-img"><img src="images/image-karinafieldlab.HEIC" alt="Lab-scale pipeloop setup"></div>
       <h3>Lab-Scale IWS Experiments</h3>
       <p class="proj-meta">NSF CBET · 2018–2023</p>
       <p>Designed and operated a pilot-scale pipeloop to experimentally characterize how supply intermittency and pressure variation affect contamination intrusion, microbial communities, and DBP formation.</p>
@@ -1120,7 +1079,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — Mexico City water tank ]</div>
+      <div class="project-img"><img src="images/image-mexico.HEIC" alt="Mexico City water storage tank"></div>
       <h3>Household Water Management in Mexico City</h3>
       <p class="proj-meta">World Bank · NSF · 2018–2021</p>
       <p>How households in Mexico City cope with severe intermittent supply through water storage, treatment, and sourcing decisions. Combined survey data, water quality testing, and decision modeling.</p>
@@ -1128,15 +1087,13 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — water quality testing, sub-Saharan Africa ]</div>
       <h3>Water Quality Monitoring Programs</h3>
-      <p class="proj-meta">While at the Aquaya Institute · 2013–2018</p>
-      <p>Assessed coverage, quality, and information flows of regulatory water quality monitoring programs across sub-Saharan Africa, including field work in Kenya, Nigeria, Senegal, and Liberia.</p>
-      <div class="project-links"><a href="#">Kumpel et al. 2016 ES&amp;T</a><a href="#">Peletz et al. 2018</a></div>
+      <p class="proj-meta">Aquaya Institute · 2013–2018 · MassDEP · 2020–ongoing</p>
+      <p>Two threads: (1) While at the Aquaya Institute, assessed coverage, quality, and information flows of regulatory water quality monitoring programs across sub-Saharan Africa, including fieldwork in Kenya, Nigeria, Senegal, and Liberia. (2) In Massachusetts, developed frameworks for designing and evaluating drinking water sampling programs, including source water monitoring in DCR reservoirs and distribution system monitoring for small systems.</p>
+      <div class="project-links"><a href="#">Kumpel et al. 2016 ES&amp;T</a><a href="#">Peletz et al. 2018</a><a href="#">da Luz &amp; Kumpel 2020</a><a href="#">da Luz, Tobiason, Kumpel 2021</a></div>
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — water safety plan, Asia-Pacific ]</div>
       <h3>Water Safety Plan Impact Assessment, Asia-Pacific</h3>
       <p class="proj-meta">While at the Aquaya Institute · WHO · 2014–2016</p>
       <p>Measured the impact of Water Safety Plans implemented across the Asia-Pacific region on water quality outcomes and utility practices. Report submitted to WHO.</p>
@@ -1144,7 +1101,6 @@
     </div>
 
     <div class="project-card">
-      <div class="project-img">[ photo — Port Harcourt water access ]</div>
       <h3>Urban Water Services in Fragile States</h3>
       <p class="proj-meta">While at the Aquaya Institute · World Bank · 2013–2015</p>
       <p>Assessment of drinking water sources, quality, and access in Port Harcourt, Nigeria and Monrovia, Liberia — cities with severely degraded piped infrastructure.</p>
@@ -1170,7 +1126,7 @@
   <ul style="font-size:0.85rem; line-height:1.8;">
     <li><a href="https://www.nsfgrfp.org/">NSF Graduate Research Fellowship Program (GRFP)</a></li>
     <li><a href="https://ndseg.org/">National Defense Science and Engineering Graduate Fellowship (NDSEG)</a></li>
-    <li><a href="http://www.switzernetwork.org/become-fellow">Switzer Environmental Fellowship</a></li>
+    <li><a href="https://www.switzernetwork.org/fellowship/become-fellow">Switzer Environmental Fellowship</a></li>
     <li><a href="https://hertzfoundation.org/fellowships/welcome-to-the-fellowship/">Hertz Fellowship</a></li>
     <li><a href="https://www.pdsoros.org/">Paul and Daisy Soros Fellowship for New Americans</a></li>
     <li><a href="https://www.aauw.org/resources/programs/fellowships-grants/current-opportunities/american/">AAUW American Fellowships</a></li>
@@ -1181,17 +1137,12 @@
 
   <h2>Postdoctoral fellowships</h2>
   <ul style="font-size:0.85rem; line-height:1.8;">
-    <li><a href="http://www.loreal.com/en/usa/pages/group/fwis.aspx">L'Oréal USA For Women in Science</a></li>
-    <li><a href="http://sites.nationalacademies.org/pga/rap/">NRC Research Associateship Programs</a></li>
-    <li><a href="http://www.slb.com/careers/students/scholarships/fim.aspx">Schlumberger Foundation Faculty for the Future</a></li>
+    <li><a href="https://www.aaas.org/programs/loreal-usa-women-science">L'Oréal USA For Women in Science</a></li>
+    <li><a href="https://www.nationalacademies.org/programs/PGA-FP-18-P-23">NRC Research Associateship Programs</a></li>
+    <li><a href="https://www.facultyforthefuture.net/">Schlumberger Foundation Faculty for the Future</a></li>
     <li><a href="https://www.asee.org/fellowships">ASEE Postdoctoral Fellowship</a></li>
   </ul>
 
-  <h2>WASH jobs and opportunities</h2>
-  <ul style="font-size:0.85rem; line-height:1.8;">
-    <li><a href="https://docs.google.com/spreadsheets/d/1_BKYJY3Jx-EhVfJGILPZ3FRQxqWqTEcjEGxdJzVkzuM/edit#gid=0">WASH Jobs Google Sheet</a></li>
-    <li><a href="https://visibilitystem.africa/">Visibility STEM Africa</a></li>
-  </ul>
 </div>
 
 
@@ -1210,7 +1161,7 @@
   <p>UMass undergraduates interested in independent study or honors research are welcome to reach out, particularly those with relevant coursework in environmental engineering or data science.</p>
 
   <h2>Contact</h2>
-  <p>Emily Kumpel · <a href="https://www.umass.edu/engineering/about/directory/emily-kumpel">ekumpel@umass.edu</a><br>
+  <p>Emily Kumpel · <a href="https://www.umass.edu/engineering/about/directory/emily-kumpel">Faculty profile</a><br>
   Department of Civil and Environmental Engineering<br>
   University of Massachusetts Amherst<br>
   <em>Currently on sabbatical at IIT-Bombay through summer 2026.</em></p>
@@ -1246,13 +1197,14 @@
   <div class="teaching-item">
     <div class="course-code">CEE 580</div>
     <h3>Drinking Water for All: A Community-Engaged Learning Class</h3>
-    <p class="course-meta">Graduate elective (3 cr.) · Co-taught with Reckhow and Milman</p>
-    <p>Community-engaged graduate course pairing students with small and disadvantaged water systems in Massachusetts to address real regulatory and operational challenges. Students work directly with utilities, apply engineering and policy frameworks to safe drinking water compliance, and develop practical deliverables for partner systems. Co-instructors include Dave Reckhow and Anita Milman.</p>
+    <p class="course-meta">Graduate elective (3 cr.) · Co-taught with Milman</p>
+    <p>Community-engaged graduate course pairing students with small and disadvantaged water systems in Massachusetts to address real regulatory and operational challenges. Students work directly with utilities, apply engineering and policy frameworks to safe drinking water compliance, and develop practical deliverables for partner systems.</p>
   </div>
 
 </div>
 
 <div style="border-top: 1px solid var(--border); padding: 1.8rem 0; margin-top: 4rem; font-size: 0.77rem; color: var(--faint);">Water Systems Lab · Civil &amp; Environmental Engineering · University of Massachusetts Amherst</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
 function showPage(id) {
   document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
@@ -1266,11 +1218,10 @@ function showPage(id) {
 function showPubView(view, el) {
   document.querySelectorAll('.pub-view').forEach(function(v) { v.classList.remove('active'); });
   document.querySelectorAll('.pub-tab').forEach(function(t) { t.classList.remove('active'); });
-  document.getElementById('pub-' + view).classList.add('active');
-  el.classList.add('active');
+  var v = document.getElementById('pub-' + view);
+  if (v) v.classList.add('active');
+  if (el) el.classList.add('active');
 }
-
-showPage('home');
 </script>
 </body>
 </html>
