@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<!--
+================================================================
+  WATER SYSTEMS LAB WEBSITE — wsl.umass.edu
+  Last updated: Feb 2026
+
+  QUICK EDITING GUIDE
+  Use Cmd+F (Mac) or Ctrl+F (Windows) to find sections.
+
+  NEWS ITEMS ............. search: "NEWS ITEMS —"
+  KEY FINDINGS ........... search: "KEY FINDINGS —"
+  MAP FIELD SITES ........ search: "MAP FIELD SITES —"
+  PUBLICATIONS ........... search: "PUBLICATIONS —"
+  PROJECTS ............... search: "PROJECTS —"
+  PEOPLE ................. search: "PEOPLE —"
+  RESOURCES .............. search: "RESOURCES —"
+
+  HOME page meta (PI, location, etc.) .. search: "home-meta"
+  INTRO text .................. search: "Kumpel Lab) is"
+  JOIN page text .............. search: "page-join"
+  TEACHING page ............... search: "page-teaching"
+
+  TO ADD A PHOTO anywhere:
+    Replace:  [ photo — description ]
+    With:     <img src="images/filename.jpg" alt="description">
+    Note: create an images/ folder next to this file for photos.
+
+  TO DEPLOY: save file, open GitHub Desktop or VS Code git panel,
+    commit with a short message, push. Site updates in ~60 seconds.
+================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Water Systems Lab – UMass Amherst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --text: #1c1a17;
+      --muted: #6b6560;
+      --faint: #a09890;
+      --border: #e4ddd6;
+      --bg: #faf8f5;
+      --card-bg: #f5f1ec;
+      --link: #3d6e8a;
+      --accent: #7a4f3a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 2.2rem;
+    }
+
+    /* NAV */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 0;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 3.5rem;
+    }
+    .nav-brand {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.6rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+    h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text);
+      margin: 2.5rem 0 0.8rem;
+    }
+    h3 { font-size: 0.92rem; font-weight: 500; margin-bottom: 0.3rem; }
+    p { margin-bottom: 0.85rem; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .muted { color: var(--muted); }
+    .page-section { margin-bottom: 2.5rem; }
+
+    /* HOME */
+    .home-intro {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3.5rem;
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .home-intro p { font-size: 0.97rem; line-height: 1.8; color: #2e2a26; }
+    .home-meta { font-size: 0.82rem; color: var(--muted); line-height: 2.1; }
+    .home-meta strong { color: var(--text); font-weight: 500; }
+    .home-meta a { color: var(--muted); }
+    .home-meta a:hover { color: var(--text); text-decoration: underline; }
+
+    /* NEWS */
+    .news-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-date { color: var(--faint); font-size: 0.76rem; padding-top: 0.15rem; font-variant-numeric: tabular-nums; }
+
+    /* HOME HIGHLIGHTS */
+    .home-highlights { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin:2rem 0 3rem; }
+    .hl-card {
+      display:flex; flex-direction:column; gap:0.35rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding:1.1rem 1.2rem;
+      cursor:pointer; text-decoration:none; color:inherit;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+    .hl-card:hover { box-shadow:0 3px 14px rgba(0,0,0,0.08); border-color:#c8bdb5; text-decoration: none; }
+    .hl-card .hl-icon { font-size:1.25rem; }
+    .hl-card strong { font-size:0.87rem; font-family: 'Lora', serif; font-weight: 500; }
+    .hl-card span { font-size:0.76rem; color:var(--muted); line-height:1.5; }
+
+    /* PEOPLE */
+    .uva-person { display:flex; gap:1.5rem; margin-bottom:2.2rem; align-items:flex-start; }
+    .uva-photo {
+      flex:0 0 110px; width:110px; height:110px;
+      background: var(--card-bg);
+      border:1px solid var(--border);
+      display:flex; align-items:center; justify-content:center; overflow:hidden;
+    }
+    .uva-photo img { width:100%; height:100%; object-fit:cover; }
+    .uva-photo svg { width:48px; height:48px; }
+    .uva-info { flex:1; }
+    .uva-info h3 { margin:0 0 0.2rem; font-size:1rem; font-family: 'Lora', serif; font-weight: 500; }
+    .uva-role { font-style:italic; color:var(--muted); font-size:0.81rem; margin:0 0 0.45rem; line-height:1.55; }
+    .uva-info p { font-size:0.83rem; margin:0 0 0.3rem; line-height:1.6; }
+    .uva-section {
+      font-size:0.73rem; text-transform:uppercase; letter-spacing:0.09em;
+      color:var(--muted); font-weight:500; margin:2.5rem 0 1rem;
+      border-bottom:1px solid var(--border); padding-bottom:0.4rem;
+    }
+
+    .student-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 0.5rem; }
+    .student-table th {
+      text-align: left; font-weight: 500; font-size: 0.76rem;
+      color: var(--muted); border-bottom: 1px solid var(--border);
+      padding: 0.4rem 0.5rem 0.4rem 0; letter-spacing: 0.02em;
+    }
+    .student-table td { padding: 0.5rem 0.5rem 0.5rem 0; border-bottom: 1px solid #ede8e2; vertical-align: top; }
+    .student-table tr:last-child td { border-bottom: none; }
+
+    /* PUBLICATIONS */
+    .pub-tabs {
+      display: flex; gap: 0; margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .pub-tab {
+      font-size: 0.81rem; padding: 0.5rem 1.2rem 0.5rem 0;
+      cursor: pointer; color: var(--muted);
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: color 0.15s;
+    }
+    .pub-tab.active { color: var(--text); border-bottom-color: var(--accent); }
+    .pub-tab:hover { color: var(--text); }
+    .pub-view { display: none; }
+    .pub-view.active { display: block; }
+    .pub-year {
+      font-size: 0.76rem; font-weight: 500; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.07em;
+      margin: 2rem 0 0.5rem; padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .pub-year:first-child { margin-top: 0; }
+    .pub-item { padding: 0.7rem 0; border-bottom: 1px solid #ede8e2; font-size: 0.85rem; }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-title { font-weight: 500; color: var(--text); display: block; margin-bottom: 0.2rem; line-height: 1.45; }
+    .pub-authors { color: var(--muted); display: block; margin-bottom: 0.15rem; font-size: 0.82rem; }
+    .pub-journal { color: var(--muted); font-style: italic; font-size: 0.82rem; }
+    .pub-journal a { color: var(--faint); font-style: normal; font-size: 0.78rem; }
+    .topic-section { margin-bottom: 2rem; }
+    .topic-section h3 {
+      font-family: 'Lora', serif; font-size: 0.97rem; font-weight: 500;
+      margin-bottom: 0.5rem; padding-bottom: 0.35rem; border-bottom: 1px solid var(--border);
+    }
+    .topic-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.8rem; }
+    .topic-nav a {
+      font-size:0.79rem; padding:0.2rem 0.7rem;
+      border:1px solid var(--border); color:var(--link);
+      text-decoration:none; background: var(--card-bg);
+    }
+    .topic-nav a:hover { background:#ede8e2; text-decoration: none; }
+
+    /* FUNDING */
+    .grant-item { padding: 0.9rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+    .grant-item:last-child { border-bottom: none; }
+    .grant-title { font-weight: 500; display: block; margin-bottom: 0.2rem; }
+    .grant-meta { color: var(--muted); font-size: 0.8rem; }
+
+    /* RESOURCES */
+    .resources-section { margin-bottom: 2rem; }
+    .resources-section ul { list-style: none; padding: 0; }
+    .resources-section li { padding: 0.45rem 0; border-bottom: 1px solid #ede8e2; font-size: 0.85rem; }
+    .resources-section li:last-child { border-bottom: none; }
+    .resources-section .desc { color: var(--muted); font-size: 0.79rem; display: block; margin-top: 0.1rem; }
+
+    /* PROJECTS */
+    .project-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; margin-bottom:3rem; }
+    .project-card { display:flex; flex-direction:column; }
+    .project-img {
+      width:100%; aspect-ratio:16/9;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      display:flex; align-items:center; justify-content:center;
+      font-size:0.72rem; color:#c0b8b0; margin-bottom:0.8rem; overflow:hidden;
+    }
+    .project-img img { width:100%; height:100%; object-fit:cover; }
+    .project-card h3 { font-size:0.9rem; font-weight:500; margin-bottom:0.25rem; line-height:1.4; }
+    .project-card .proj-meta { font-size:0.77rem; color:var(--faint); margin-bottom:0.4rem; }
+    .project-card p { font-size:0.83rem; color:var(--muted); line-height:1.6; margin-bottom:0.5rem; flex-grow:1; }
+    .project-links { font-size:0.78rem; }
+    .project-links a { color:var(--link); margin-right:0.8rem; }
+    .proj-section-title {
+      font-family: 'Lora', serif; font-size: 0.85rem; font-weight: 500;
+      color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em;
+      margin: 0 0 1.5rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);
+    }
+    .past-grid .project-img { filter: grayscale(15%); }
+    .past-grid .project-card h3 { color: var(--muted); }
+
+    /* RESEARCH */
+    .research-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:2rem 0; }
+    .research-card {
+      border:1px solid var(--border); padding:1.4rem 1.6rem;
+      background: var(--card-bg);
+      transition: box-shadow 0.15s;
+    }
+    .research-card:hover { box-shadow:0 3px 14px rgba(0,0,0,0.07); }
+    .research-card .rc-icon { font-size:1.5rem; margin-bottom:0.65rem; display:block; }
+    .research-card h3 { font-family: 'Lora', serif; font-size:0.95rem; font-weight:500; margin:0 0 0.5rem; }
+    .research-card p { font-size:0.82rem; color:var(--muted); line-height:1.65; margin:0; }
+    .approach-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin:1.5rem 0 2rem; }
+    .approach-item { background: var(--card-bg); border-left:3px solid var(--border); padding:0.9rem 1rem; }
+    .approach-item h4 { font-size:0.8rem; margin:0 0 0.35rem; text-transform:uppercase; letter-spacing:0.05em; color:#4a433c; font-weight:500; }
+    .approach-item p { font-size:0.78rem; color:var(--muted); margin:0; line-height:1.55; }
+    .section-rule { border:none; border-top:1px solid var(--border); margin:2.5rem 0 1.5rem; }
+
+    /* TEACHING */
+    .teaching-item {
+      border-left: 3px solid var(--border);
+      padding: 0.8rem 0 0.8rem 1.3rem;
+      margin-bottom: 1.8rem;
+      transition: border-left-color 0.15s;
+    }
+    .teaching-item:hover { border-left-color: var(--accent); }
+    .course-code { font-family:monospace; font-size:0.77rem; color:var(--muted); font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.2rem; }
+    .teaching-item h3 { margin:0 0 0.2rem; font-size:0.97rem; }
+    .course-meta { font-size:0.79rem; color:var(--muted); margin:0 0 0.5rem; font-style:italic; }
+    .teaching-item p:last-child { margin:0; font-size:0.84rem; line-height:1.65; }
+
+    /* PAST TAG */
+    .past-tag { font-size:0.72rem; color:var(--faint); font-weight:400; margin-left:0.4rem; text-transform:uppercase; letter-spacing:0.04em; }
+
+    /* KEY FINDINGS */
+    .findings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1rem 0 3rem; }
+    .finding-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.2rem 1.4rem;
+      display: flex; flex-direction: column; gap: 0.7rem;
+    }
+    .finding-text {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin: 0;
+    }
+    .finding-link { font-size: 0.78rem; color: var(--link); text-decoration: none; }
+    .finding-link:hover { text-decoration: underline; }
+    @media (max-width: 640px) { .findings-grid { grid-template-columns: 1fr; } }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.8rem 0;
+      margin-top: 4rem;
+      font-size: 0.77rem;
+      color: var(--faint);
+    }
+
+    @media (max-width: 640px) {
+      .home-intro { grid-template-columns: 1fr; }
+      .home-highlights { grid-template-columns: 1fr 1fr; }
+      .research-grid { grid-template-columns: 1fr; }
+      .approach-grid { grid-template-columns: 1fr 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 0.8rem; }
+      .uva-person { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand" onclick="showPage('home')">Water Systems Lab</span>
+  <ul class="nav-links">
+    <li><a class="active" id="nav-home" onclick="showPage('home')">Home</a></li>
+    <li><a id="nav-research" onclick="showPage('research')">Research</a></li>
+    <li><a id="nav-people" onclick="showPage('people')">People</a></li>
+    <li><a id="nav-publications" onclick="showPage('publications')">Publications</a></li>
+    <li><a id="nav-projects" onclick="showPage('projects')">Projects</a></li>
+    <li><a id="nav-teaching" onclick="showPage('teaching')">Teaching</a></li>
+    <li><a id="nav-resources" onclick="showPage('resources')">Resources</a></li>
+    <li><a id="nav-join" onclick="showPage('join')">Join</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="home-intro">
+    <div>
+      <h1>Water Systems Lab at UMass Amherst</h1>
+      <p style="font-family:'Lora',serif; font-size:1.05rem; font-style:italic; color:var(--muted); margin-bottom:1.5rem; margin-top:-0.3rem;">Water for the Common Wealth</p>
+      <div style="width:100%; aspect-ratio:16/9; background:var(--card-bg); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--faint); font-size:0.78rem; margin-bottom:1.2rem;">[ photo ]</div>
+      <p>The Water Systems Lab (Kumpel Lab) is an environmental engineering research group at the University of Massachusetts Amherst studying water infrastructure, systems, and people, from intermittently supplied cities in India to small systems in rural Alaska and Massachusetts.</p>
+      <p>Our work connects technical measurements of water quality and supply reliability to public health outcomes, regulatory practice, and policy.</p>
+    </div>
+    <div class="home-meta">
+      <div><strong>PI</strong><br><a onclick="showPage('people')">Emily Kumpel</a></div>
+      <br>
+      <div><strong>Department</strong><br>Civil &amp; Environmental Engineering</div>
+      <br>
+      <div><strong>Institution</strong><br>University of Massachusetts Amherst</div>
+      <br>
+      <div><strong>Current location</strong><br>IIT-Bombay, Mumbai<br><span style="color:var(--faint); font-size:0.75rem;">Fulbright-Nehru Fellow, 2025–26</span></div>
+      <br>
+      <div><a href="https://www.umass.edu/engineering/about/directory/emily-kumpel">Faculty profile</a></div>
+    </div>
+  </div>
+
+
+  <div class="home-highlights">
+    <a class="hl-card" onclick="showPage('research')">
+      <span class="hl-icon">🔬</span>
+      <strong>Research</strong>
+      <span>IWS · water quality source-to-tap · infrastructure mapping · household storage · small systems</span>
+    </a>
+    <a class="hl-card" onclick="showPage('projects')">
+      <span class="hl-icon">📋</span>
+      <strong>Projects</strong>
+      <span>Current and past funded work across the US, India, Kenya, and Alaska</span>
+    </a>
+    <a class="hl-card" onclick="showPage('publications')">
+      <span class="hl-icon">📄</span>
+      <strong>Publications</strong>
+      <span>Browse by year or topic</span>
+    </a>
+    <a class="hl-card" onclick="showPage('people')">
+      <span class="hl-icon">👥</span>
+      <strong>People</strong>
+      <span>Current team, affiliated researchers, and alumni</span>
+    </a>
+  </div>
+
+  <h2>What we've found</h2>
+  <!--
+  ============================================================
+  KEY FINDINGS — update these when you have new flagship results
+  Each card has:
+    finding-text: the finding in quotes (italic serif)
+    finding-link: citation + arrow linking to the paper
+
+  To add/replace a finding, copy a finding-card block and edit.
+  Keep to 4 cards for layout balance (2x2 grid).
+  ============================================================
+  -->
+  <div class="findings-grid">
+    <div class="finding-card">
+      <p class="finding-text">"Predictability of water supply matters as much as total hours — households cope better with reliable intermittency than unpredictable supply."</p>
+      <a href="#" class="finding-link">Thomson et al. 2024 &rarr;</a>
+    </div>
+    <div class="finding-card">
+      <p class="finding-text">"Wastewater intrusion during supply gaps changes the types and concentrations of disinfection byproducts formed — a previously undercharacterized risk."</p>
+      <a href="https://doi.org/10.1371/journal.pwat.0000273" class="finding-link" target="_blank">Roberts et al. 2025 &rarr;</a>
+    </div>
+    <div class="finding-card">
+      <p class="finding-text">"Machine learning can predict wastewater service type at the parcel level, revealing infrastructure gaps invisible in official records."</p>
+      <a href="#" class="finding-link">da Luz, Taneja &amp; Kumpel 2025 &rarr;</a>
+    </div>
+    <div class="finding-card">
+      <p class="finding-text">"Point-of-use treatment can be cost-competitive with centralized options for small systems facing SDWA compliance — but regulatory pathways remain a barrier."</p>
+      <a href="#" class="finding-link">Lane et al. 2025 &rarr;</a>
+    </div>
+  </div>
+
+  <h2>Where we work</h2>
+  <p class="muted" style="font-size:0.83rem; margin-bottom:0.8rem;">Active and past research locations — click markers for details.</p>
+  <!--
+  ============================================================
+  MAP FIELD SITES — edit the sites array in the script below
+  Each entry is: [latitude, longitude, "Place name", "Description", "active" or "past"]
+  Blue markers = active, gray = past.
+  Find coordinates at maps.google.com (right-click → "What's here?")
+  ============================================================
+  -->
+  <div id="field-map" style="height:340px; border:1px solid var(--border); margin-bottom:3rem; background:var(--card-bg);"></div>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script>
+  (function() {
+    var leaflet = document.createElement("script");
+    leaflet.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+    leaflet.onload = function() {
+      var map = L.map("field-map", { scrollWheelZoom: false }).setView([22, 10], 2);
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        attribution: "&copy; CARTO", subdomains: "abcd", maxZoom: 19
+      }).addTo(map);
+
+      var shadedStates = ["Massachusetts", "California", "Alaska"];
+
+      fetch("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json")
+        .then(function(r){ return r.json(); })
+        .then(function(data){
+          L.geoJSON(data, {
+            style: function(feature) {
+              var name = feature.properties.name;
+              if (shadedStates.indexOf(name) !== -1) {
+                return { fillColor: "#3d6e8a", fillOpacity: 0.18, color: "#3d6e8a", weight: 1, opacity: 0.5 };
+              }
+              return { fillColor: "transparent", fillOpacity: 0, color: "#c8bdb5", weight: 0.5, opacity: 0.6 };
+            },
+            onEachFeature: function(feature, layer) {
+              if (shadedStates.indexOf(feature.properties.name) !== -1) {
+                layer.bindPopup("<strong>" + feature.properties.name + "</strong>");
+              }
+            }
+          }).addTo(map);
+        });
+
+      var a = { radius:7, fillColor:"#3d6e8a", color:"#fff", weight:1.5, fillOpacity:0.9 };
+      var p = { radius:6, fillColor:"#a09890", color:"#fff", weight:1.5, fillOpacity:0.7 };
+      [
+        [15.35,75.13,"Hubli-Dharwad, India","IWS field studies, water quality, 24\u00d77 transition (PhD research + ongoing)","active"],
+        [19.08,72.88,"Mumbai / Navi Mumbai, India","IWS fieldwork, Fulbright-Nehru fellowship 2025\u201326","active"],
+        [19.99,73.79,"Nashik, India","IWS fieldwork 2025\u201326","active"],
+        [17.68,75.90,"Solapur, India","IWS fieldwork 2025\u201326","active"],
+        [42.36,-72.52,"Massachusetts, USA","MassDEP technical assistance, small systems, lead in schools, reservoir water quality, well mapping","active"],
+        [64.20,-153.00,"Rural Alaska, USA","WASH conditions in Alaska Native communities (NSF NNA)","active"],
+        [36.17,-119.74,"California, USA","Statewide wastewater needs assessment (California State Water Board)","active"],
+        [-0.02,37.90,"Kenya","Water quality in intermittent water supply systems","active"],
+        [-1.29,36.82,"Nairobi, Kenya","Aquaya Institute: water quality monitoring, water safety plans","past"],
+        [19.43,-99.13,"Mexico City, Mexico","Household water decisions under intermittent supply","past"],
+        [4.82,7.03,"Port Harcourt, Nigeria","Urban water services in fragile states (World Bank)","past"],
+        [6.30,-10.80,"Monrovia, Liberia","Urban water services in fragile states (World Bank)","past"],
+        [14.69,-17.44,"Senegal","ICT and water quality data management","past"],
+        [-0.69,34.77,"Kisii, Kenya","Sanitary surveys and water quality testing","past"]
+      ].forEach(function(s){
+        L.circleMarker([s[0],s[1]], s[4]==="active"?a:p)
+          .bindPopup("<strong>"+s[2]+"</strong><br><span style=\"font-size:0.81rem;color:#666\">"+s[3]+"</span>")
+          .addTo(map);
+      });
+
+      var lg = L.control({position:"bottomright"});
+      lg.onAdd = function(){
+        var d = L.DomUtil.create("div");
+        d.style.cssText="background:#faf8f5;padding:6px 10px;border:1px solid #e4ddd6;font-size:0.74rem;color:#6b6560;line-height:1.9;";
+        d.innerHTML="<span style=\"display:inline-block;width:9px;height:9px;border-radius:50%;background:#3d6e8a;margin-right:5px;\"></span>Active<br>"
+                   +"<span style=\"display:inline-block;width:9px;height:9px;border-radius:50%;background:#a09890;margin-right:5px;\"></span>Past";
+        return d;
+      };
+      lg.addTo(map);
+    };
+    document.head.appendChild(leaflet);
+  })();
+  </script>
+
+  <h2>News</h2>
+  <!--
+  ============================================================
+  NEWS ITEMS — add newest at the top, oldest at the bottom
+  To add a news item, copy one line below and paste it above
+  the existing first item. Change the date and text.
+
+  For a plain item:
+    <div class="news-item"><span class="news-date">Mon YYYY</span><span>Your text here.</span></div>
+
+  For an item with a link:
+    <div class="news-item"><span class="news-date">Mon YYYY</span><span><a href="URL">Link text</a> rest of text.</span></div>
+  ============================================================
+  -->
+  <div class="news-item"><span class="news-date">Jan 2026</span><span><a href="https://www.umass.edu/engineering/news/gabriel-mesole-bracey-award">Congratulations to Gabriel Mesole</a> for being honored with the Professor John H. Bracey, Jr. Emerging Leader Award at UMass Amherst.</span></div>
+  <div class="news-item"><span class="news-date">Dec 2025</span><span>Emily presented at the 24×7 Water Supply Workshop, Centre for Multi-Disciplinary Development Research, Dharwad.</span></div>
+  <div class="news-item"><span class="news-date">Aug 2025</span><span>Emily begins Fulbright-Nehru fellowship at IIT-Bombay (2025–2026), conducting fieldwork on IWS in Indian cities in collaboration with the <a href="https://sites.google.com/view/srishti-lab-iitb/srishti?authuser=0">Srishti Lab</a>.</span></div>
+  <div class="news-item"><span class="news-date">Aug 2025</span><span>Ciara Little presents two papers at CCWI 2025 (Sheffield): an IWS modeling framework and a novel US public water system typology.</span></div>
+  <div class="news-item"><span class="news-date">Jun 2025</span><span>Gabriel Mesole presented at IWA Health-Related Water Microbiology, Netherlands.</span></div>
+  <div class="news-item"><span class="news-date">May 2025</span><span>Four presentations at AEESP Annual Conference, Duke University.</span></div>
+  
+</div>
+
+<!-- RESEARCH -->
+<div class="page" id="page-research">
+  <h1>Research</h1>
+  <p class="muted" style="margin-bottom:2rem; max-width:620px;">We study water systems across a range of technical and social contexts. Common threads are supply reliability, water quality risk, and equity of access.</p>
+
+  <div class="research-grid">
+
+    <div class="research-card">
+      <span class="rc-icon">🔄</span>
+      <h3>Intermittent water supply</h3>
+      <p>More than a billion people receive piped water on an intermittent schedule. We study how the nature and predictability of intermittency shapes household coping strategies, water quality, and health outcomes — through field studies in India, lab-scale experiments, and development of measurement frameworks.</p>
+    </div>
+
+    <div class="research-card">
+      <span class="rc-icon">🔬</span>
+      <h3>Water quality source-to-tap</h3>
+      <p>How water quality changes from source through treatment and distribution to the tap. We study microbial quality, disinfection byproducts, and contaminant dynamics in reservoirs and distribution systems, including how wastewater intrusion, intermittency, and pipe materials affect health risk. Also includes lead in schools and lead service line identification.</p>
+    </div>
+
+    <div class="research-card">
+      <span class="rc-icon">🗺️</span>
+      <h3>Mapping wastewater and water infrastructure</h3>
+      <p>Much of US water and wastewater infrastructure is unmapped at the parcel level, obscuring service gaps and equity issues. We develop machine learning methods to predict service type at scale, working with state agencies in Massachusetts, California, North Carolina, and the Gulf States.</p>
+    </div>
+
+    <div class="research-card">
+      <span class="rc-icon">🪣</span>
+      <h3>Household water storage</h3>
+      <p>We examine how storage practices affect microbial water quality and whether interventions can convert storage from a contamination risk into a reliable buffer. Combines lab studies, field work in India, Mexico City, and Kenya, and modeling of household water decisions.</p>
+    </div>
+
+    <div class="research-card">
+      <span class="rc-icon">🏘️</span>
+      <h3>Small water systems</h3>
+      <p>Many small systems face significant challenges meeting Safe Drinking Water Act requirements. We study small system compliance, treatment options, and regulatory data quality — including WASH conditions in rural Alaska where many communities lack running water.</p>
+    </div>
+
+    <div class="research-card">
+      <span class="rc-icon">🔧</span>
+      <h3>Implementation and translational research</h3>
+      <p>We provide direct technical assistance to water systems and regulators to translate research into practice. Our largest partnership is with the <a href="https://www.mass.gov/topics/drinking-water" target="_blank">Massachusetts Department of Environmental Protection (MassDEP)</a>, supporting SDWA technical assistance, PFAS and emerging contaminants in small and disadvantaged communities, lead in schools and childcare facilities, lead service line inventories, and drinking water well mapping statewide.</p>
+    </div>
+
+  </div>
+
+  <hr class="section-rule">
+  <h2 style="margin-bottom:1rem;">Approaches</h2>
+  <p class="muted" style="margin-bottom:1.2rem; max-width:620px; font-size:0.85rem;">Our research integrates field, laboratory, computational, and translational methods.</p>
+
+  <div class="approach-grid">
+    <div class="approach-item">
+      <h4>Water quality measurement</h4>
+      <p>Culture-based enumeration, short- and long-read sequencing, metagenomics, AMR profiling, pathogen detection, AOC characterization, regulated and unregulated DBP quantification.</p>
+    </div>
+    <div class="approach-item">
+      <h4>Field campaigns</h4>
+      <p>Household surveys, water quality sampling (tap and storage), pressure and flow monitoring, longitudinal data collection — from rural Alaska to urban India.</p>
+    </div>
+    <div class="approach-item">
+      <h4>Machine learning &amp; data science</h4>
+      <p>Graph neural networks, random forests, spatial models applied to infrastructure service prediction, compliance risk identification, and large regulatory/geospatial datasets.</p>
+    </div>
+    <div class="approach-item">
+      <h4>Hydraulic &amp; system modeling</h4>
+      <p>Pressure dynamics and contamination risk in distribution systems; household-level decision models for water storage and treatment under supply uncertainty.</p>
+    </div>
+    <div class="approach-item">
+      <h4>Technical assistance</h4>
+      <p>Direct support to water systems and regulators — SDWA compliance, treatment evaluation, data quality — generating research questions grounded in real regulatory challenges.</p>
+    </div>
+    <div class="approach-item">
+      <h4>Qualitative methods</h4>
+      <p>Structured and semi-structured interviews, surveys, document analysis — used to understand household behaviors, utility decision-making, and equity dimensions of water access.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- PEOPLE -->
+<div class="page" id="page-people">
+  <h1>People</h1>
+  <!--
+  ============================================================
+  PEOPLE — sections: Current Team, then Alumni table
+
+  TO ADD A PERSON, copy a uva-person block and paste it
+  in the right section. Fill in name, role, and bio.
+
+  TO ADD A PHOTO: replace the uva-photo div contents with:
+    <img src="images/firstname-lastname.jpg" alt="Name">
+
+  Template:
+    <div class="uva-person">
+      <div class="uva-photo"><svg>...placeholder icon...</svg></div>
+      <div class="uva-info">
+        <h3>Full Name</h3>
+        <p class="uva-role">Title, Department, Year–<br>
+        <a href="#">LinkedIn</a> · <a href="#">Website</a></p>
+        <p>Bio text here.</p>
+      </div>
+    </div>
+
+  TO ADD AN ALUM to the table at the bottom:
+    Copy a <tr> row and fill in Name, Role, Years, Research, Current position.
+
+  TO MOVE someone from Current to Alumni:
+    Delete their uva-person block and add a row to the alumni table.
+  ============================================================
+  -->
+
+  <h2 style="margin-top:0">Current Team</h2>
+  <hr style="border:none;border-top:1px solid var(--border);margin-bottom:1.5rem;">
+
+  <div class="uva-person">
+    <div class="uva-photo">photo</div>
+    <div class="uva-info">
+      <h3>Emily Kumpel</h3>
+      <p class="uva-role">Associate Professor, Civil &amp; Environmental Engineering, UMass Amherst<br>
+      Visiting Associate Professor, IIT-Bombay (Fulbright-Nehru Scholar, 2025–26)<br>
+      <a href="https://www.umass.edu/engineering/about/directory/emily-kumpel">ekumpel@umass.edu</a> ·
+      <a href="http://scholar.google.com/citations?user=3p8_njYAAAAJ">Google Scholar</a> ·
+      <a href="#">CV</a></p>
+      <p>Ph.D., Civil and Environmental Engineering, UC Berkeley, 2013<br>
+      M.S., Civil and Environmental Engineering, UC Berkeley, 2007<br>
+      B.S., Mechanical Engineering, Johns Hopkins University, 2006</p>
+      <p>Dr. Kumpel is an Associate Professor in Civil and Environmental Engineering at UMass Amherst, currently on sabbatical as a Fulbright-Nehru Scholar and Visiting Associate Professor at IIT-Bombay (2025–26). Her research advances sustainable and equitable drinking water systems through innovative approaches to water quality, household storage, and data science. She has over 45 peer-reviewed publications and leads comprehensive drinking water assistance programs for Massachusetts. Before joining UMass in 2017, she spent three years as a Senior Research Scientist at the Aquaya Institute in Nairobi, Kenya. <a href="#">Full bio →</a></p>
+    </div>
+  </div>
+
+  <h3 class="uva-section">Affiliated Researchers</h3>
+
+  <div class="uva-person">
+    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-info">
+      <h3>Dr. Nelson da Luz</h3>
+      <p class="uva-role">Research Assistant Professor, CEE, UMass Amherst<br>
+      <a href="#">LinkedIn</a> · <a href="#">Website</a></p>
+      <p>Nelson's research focuses on wastewater infrastructure mapping, drinking water quality monitoring program design, and data-driven approaches to water system management. He completed his Ph.D. with the Water Systems Lab in 2022 and remains an active collaborator.</p>
+    </div>
+  </div>
+
+  <div class="uva-person">
+    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-info">
+      <h3>Dr. Karina Chavarria</h3>
+      <p class="uva-role">Independent Consultant · Postdoctoral Scholar (ASEE Fellow) in the group, 2021–2024<br>
+      <a href="#">LinkedIn</a> · <a href="#">Website</a></p>
+      <p>Karina was a postdoctoral scholar in the group from 2021–2024 and continues as a collaborator and independent consultant. Her work focuses on water quality in water systems, including microbial communities from source to tap, disinfection byproducts (DBPs), antimicrobial resistance (AMR), and water quality under intermittent water supply, and the current state of point-of-use and point-of-entry treatment in the United States.</p>
+    </div>
+  </div>
+
+  <h3 class="uva-section">Postdoctoral Scholars</h3>
+
+  <div class="uva-person">
+    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-info">
+      <h3>Dr. Nathalie Thelamaque</h3>
+      <p class="uva-role">Postdoctoral Scholar, CEE, UMass Amherst, 2024–<br>
+      <a href="#">LinkedIn</a> · <a href="#">Website</a></p>
+            <p>Nathalie's research focuses on water and sanitation conditions in rural Alaska, using qualitative research methods to understand water access and equity in remote Alaska Native communities.</p>
+    </div>
+  </div>
+
+  <h3 class="uva-section">Ph.D. Students</h3>
+
+  <div class="uva-person">
+    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-info">
+      <h3>Ciara Little</h3>
+      <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2021–</p>
+      <p>Ciara's research develops typology and modeling frameworks for intermittent water supply systems and classification approaches for US public water systems.</p>
+    </div>
+  </div>
+
+  <div class="uva-person">
+    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-info">
+      <h3>Gabriel Mesole</h3>
+      <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2021–</p>
+      <p>Gabriel's research examines antimicrobial resistance in drinking water distribution systems and seasonal coliform dynamics in drinking water reservoirs.</p>
+    </div>
+  </div>
+
+  <div class="uva-person">
+    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-info">
+      <h3>Poonam Tajanpure</h3>
+      <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2022–</p>
+      <p>Poonam studies the unpredictability of intermittent water supply and its associations with child health outcomes in urban India, as well as lead in schools and lead service line predictions.</p>
+    </div>
+  </div>
+
+  <div class="uva-person">
+    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-info">
+      <h3>Kevine Odira</h3>
+      <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2023–</p>
+      <p>Kevine's research examines household water storage and reliability under intermittent supply.</p>
+    </div>
+  </div>
+
+  <div class="uva-person">
+    <div class="uva-photo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <div class="uva-info">
+      <h3>Mitchel Ghantous <span style="font-weight:300;font-size:0.85em">(co-advised)</span></h3>
+      <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2024–</p>
+      <p>Mitchel's research focuses on disinfection byproducts in drinking water systems.</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:3rem;">Alumni</h2>
+  <hr style="border:none;border-top:1px solid var(--border);margin-bottom:1rem;">
+
+  <table class="student-table">
+    <thead>
+      <tr><th>Name</th><th>Role</th><th>Years</th><th>Research / Notes</th><th>Current position</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Karina Chavarria</td><td>Postdoc (ASEE)</td><td>2021–2024</td><td>DBPs, AMR, IWS water quality, POU/POE</td><td>Independent Consultant; Affiliated Researcher, UMass Amherst</td></tr>
+      <tr><td>Nelson da Luz</td><td>Postdoc / Ph.D.</td><td>2019–2024</td><td>Wastewater infrastructure mapping; water quality monitoring program design</td><td>Research Assistant Professor, UMass Amherst</td></tr>
+      <tr><td>Kaycie Lane</td><td>Postdoc</td><td>2020–2022</td><td>Small systems, POU/POE treatment, trucked water</td><td>Assistant Professor of Practice, University of Nebraska Lincoln</td></tr>
+      <tr><td>Liam Amery</td><td>MS</td><td>2024</td><td>Arsenic exposure predictions for private well users in MA</td><td>—</td></tr>
+      <tr><td>Thomas Roberts</td><td>MS</td><td>2023</td><td>Disinfection byproducts in intermittent water supply</td><td>Research Fellow, UMass Amherst</td></tr>
+      <tr><td>Carlos Veras</td><td>MS</td><td>2023</td><td>Total coliform variability in a drinking water reservoir</td><td>Water Resources Engineer, Kleinfelder</td></tr>
+      <tr><td>Hannah Wharton</td><td>MS</td><td>2022</td><td>E. coli fate and transport in intermittent vs. continuous supply</td><td>Ph.D. student, UC Berkeley</td></tr>
+      <tr><td>Bridgette Charlebois</td><td>MS</td><td>2021</td><td>First flush volumes in rainwater catchment systems</td><td>Adjudication Engineer, Utah Dept. of Natural Resources</td></tr>
+      <tr><td>Mariam Alkattan</td><td>MS</td><td>2021</td><td>Water quality in intermittent supply — model pipeloop</td><td>—</td></tr>
+      <tr><td>Savannah Wunderlich</td><td>MS</td><td>2020</td><td>Household water decisions under IWS in Mexico City</td><td>—</td></tr>
+      <tr><td>LeighAnn D'Andrea</td><td>MS</td><td>2019</td><td>Drinking water quality test kits for citizen scientists</td><td>Project Programmer, US Air Force</td></tr>
+      <tr><td>Ella Prabhakar</td><td>Undergrad (IS)</td><td>2025</td><td>—</td><td>—</td></tr>
+      <tr><td>Jacqueline White</td><td>Undergrad (IS)</td><td>2023–24</td><td>—</td><td>—</td></tr>
+      <tr><td>Liam Amery</td><td>Undergrad (Honors)</td><td>2022</td><td>Lead contamination in MA school drinking water</td><td>MS, UMass Amherst</td></tr>
+      <tr><td>Tom Roberts</td><td>Undergrad (Honors)</td><td>2021</td><td>PFAS in MA drinking water</td><td>MS, UMass Amherst</td></tr>
+      <tr><td>Hannah Wharton</td><td>Undergrad (Honors)</td><td>2019</td><td>E. coli removal in POU treatment</td><td>MS → Ph.D., UC Berkeley</td></tr>
+      <tr><td>Farah Rawas</td><td>Undergrad (IS)</td><td>2018</td><td>Utility-reported vs. household-experienced supply hours</td><td>MS, University of British Columbia</td></tr>
+      <tr><td>Akshay Delity</td><td>Undergrad (IS)</td><td>2019</td><td>CFD model of water storage tank geometries</td><td>Peace Corps Panama</td></tr>
+      <tr><td>Bridgette Charlebois</td><td>Undergrad (IS)</td><td>2019</td><td>Pipeloop construction</td><td>MS, UMass Amherst</td></tr>
+      <tr><td>Mitchel Ghantous</td><td>Undergrad (IS)</td><td>2019</td><td>—</td><td>Ph.D. student, UMass Amherst</td></tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<!-- PUBLICATIONS -->
+<div class="page" id="page-publications">
+  <h1>Publications</h1>
+  <p style="font-size:0.82rem; margin-bottom:1.5rem;"><a href="http://scholar.google.com/citations?user=3p8_njYAAAAJ">Full list on Google Scholar</a></p>
+  <!--
+  ============================================================
+  PUBLICATIONS — two views: By Year and By Topic
+  Both lists need to be updated when you add a new paper.
+
+  TO ADD A PAPER (By Year view):
+    1. Find the correct year heading, e.g. <div class="pub-year">2026</div>
+       If the year doesn't exist yet, add it above the previous year.
+    2. Copy any pub-item line and paste below the year heading.
+    3. Fill in title, authors, journal. Replace href="#" with the DOI link.
+
+  Template:
+    <div class="pub-item">
+      <span class="pub-title">Title here</span>
+      <span class="pub-authors">Authors here</span>
+      <span class="pub-journal"><em>Journal Name</em>, vol(issue) · <a href="https://doi.org/...">doi</a></span>
+    </div>
+
+  TO ADD A PAPER (By Topic view):
+    Find the relevant topic section below and add the same pub-item block.
+
+  NOTE: <u>underline</u> = student advisee, * = postdoc
+  ============================================================
+  -->
+
+  <div class="pub-tabs">
+    <div class="pub-tab active" onclick="showPubView('year', this)">By year</div>
+    <div class="pub-tab" onclick="showPubView('topic', this)" style="margin-left:1.2rem;">By topic</div>
+  </div>
+
+  <!-- BY YEAR -->
+  <div class="pub-view active" id="pub-year">
+
+    <div class="pub-year">2025</div>
+    <div class="pub-item"><span class="pub-title">Intermittent versus continuous (24×7) water supply system: empirical findings from Karnataka, India</span><span class="pub-authors">Panchamukhi, P., Billava, N., Nayak, N.S., Kumpel, E., Ercumen, A., Burt, Z.</span><span class="pub-journal"><em>Review of Development and Change</em>, 30(2) · <a href="https://doi.org/10.1177/09722661251392676">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Methods and Uncertainty in Predictions of Arsenic Exposure and Health Outcomes for Private Well Users in Massachusetts</span><span class="pub-authors"><u>Amery, A.</u>, Tobiason, J., Kumpel, E.</span><span class="pub-journal"><em>Environmental Science &amp; Technology</em> · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Look Out Below: Predicting Wastewater Infrastructure Service Type at the Land Parcel Scale</span><span class="pub-authors">da Luz, N.*, Taneja, J., Kumpel, E.</span><span class="pub-journal"><em>ACS ES&amp;T Engineering</em> · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Seasonal Total Coliform Dynamics in a Drinking Water Reservoir</span><span class="pub-authors"><u>Veras, C.E.</u>, Tobiason, J., Marques, A.C., Lee, Y., Kumpel, E.</span><span class="pub-journal"><em>Water Research</em>, 284(15), 123850 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Moving beyond the silos of opportunistic pathogen and disinfection byproduct research to improve drinking water system management</span><span class="pub-authors">Lee, S., Sun, Y., Fan, S., et al., Kumpel, E., et al.</span><span class="pub-journal"><em>Environmental Science and Technology</em>, 59(18) · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Impacts of wastewater intrusion on disinfection byproduct formation: an experimental study</span><span class="pub-authors"><u>Roberts, T.</u>, Kumpel, E., Rajesh, L., Lanzarini-Lopes, M., Reckhow, D., Chavarria*, K.</span><span class="pub-journal"><em>PLOS Water</em>, 4(4), e0000273 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Comparing the economic, environmental, and exposure impacts of options for coming into compliance with drinking water regulations in very small water systems</span><span class="pub-authors">Lane, K.*, Tobiason, J., Reckhow, D., Kumpel, E.</span><span class="pub-journal"><em>Environmental Research: Infrastructure and Sustainability</em>, 5, 015024 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Drinking Water Quality Test Kits for Home Use in the United States</span><span class="pub-authors"><u>D'Andrea, L.</u>, Kumpel, E.</span><span class="pub-journal"><em>Journal of Water and Health</em>, in press · <a href="#">doi</a></span></div>
+
+    <div class="pub-year">2024</div>
+    <div class="pub-item"><span class="pub-title">Water supply interruptions are associated with more frequent stressful behaviors and emotions but mitigated by predictability: A multi-site study</span><span class="pub-authors">Thomson, P., Pearson, A., Kumpel, E., Guzman, D., Workman, C., Fuente, D., Wutich, A., Stoler, J.</span><span class="pub-journal"><em>Environmental Science and Technology</em>, 58(16), 7010–7019 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Disinfection Byproducts in Intermittent Piped Water Supplies</span><span class="pub-authors"><u>Roberts, T.</u>, Reckhow, D., Kumpel, E., Chavarria*, K.</span><span class="pub-journal"><em>ACS ES&amp;T Water</em>, 3(12), 3767–3781 · <a href="#">doi</a></span></div>
+
+    <div class="pub-year">2023</div>
+    <div class="pub-item"><span class="pub-title">Water Lead Levels in Massachusetts Schools and Early Education and Childcare Facilities</span><span class="pub-authors"><u>Amery, L.</u>, Tobiason, J., Kumpel, E.</span><span class="pub-journal"><em>AWWA Water Science</em>, e1358 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Assessment of Contaminants in a Drinking Water Supply Watershed</span><span class="pub-authors"><u>Marques, A.</u>, <u>Veras, C.</u>, Kumpel, E., Tobiason, J., Guzman, C.</span><span class="pub-journal"><em>International Soil and Water Conservation Research</em> · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Effective First Flush Volumes in Rainwater Catchment Systems</span><span class="pub-authors"><u>Charlebois, B.</u>, Reckhow, D., Wittbold, P., Kumpel, E.</span><span class="pub-journal"><em>AQUA — Water Infrastructure, Ecosystems and Society</em>, 72(5), 814–826 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">A critical review of the global use and context of trucked water as a potable water supply</span><span class="pub-authors">Lane, K.*, Kumpel, E.</span><span class="pub-journal"><em>ACS ES&amp;T Water</em> · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Drinking water accessibility typologies in low- and middle-income countries</span><span class="pub-authors">Chung, H., Kumpel, E., Oke, J.</span><span class="pub-journal"><em>Environmental Research Letters</em>, 18(2), 025009 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Triple Bottom Line Approach for Comparing Point-of-Use/Point-of-Entry to Centralized Water Treatment</span><span class="pub-authors">Lane, K.*, Reckhow, D., Tobiason, J., Kumpel, E.</span><span class="pub-journal"><em>AWWA Water Science</em>, 5(2), e1320 · <a href="#">doi</a></span></div>
+
+    <div class="pub-year">2022</div>
+    <div class="pub-item"><span class="pub-title">The Future of Piped Water</span><span class="pub-authors">Milman, A., Kumpel, E., Lane*, K.</span><span class="pub-journal"><em>Water International</em> · <a href="#">doi</a></span></div>
+
+    <div class="pub-year">2021</div>
+    <div class="pub-item"><span class="pub-title">Optimizing Household Water Decisions for Managing Intermittent Water Supply in Mexico City</span><span class="pub-authors"><u>Wunderlich, S.</u>, Freeman, S., Galindo, L., Brown, C., Kumpel, E.</span><span class="pub-journal"><em>Environmental Science &amp; Technology</em>, 55(12), 8371–8381 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Water quality monitoring with purpose: Using a novel framework and leveraging long-term data</span><span class="pub-authors"><u>da Luz, N.</u>, Tobiason, J., Kumpel, E.</span><span class="pub-journal"><em>Science of the Total Environment</em>, 818 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Intermittent and continuous water supply and water access in India during the COVID-19 pandemic</span><span class="pub-authors">Kumpel, E., Billava, N., Nayak, N., Ercumen, A.</span><span class="pub-journal"><em>Journal of Water and Health</em>, 20(1), 139–148 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Long-term analysis of road salt loading and transport in a rural drinking water reservoir watershed</span><span class="pub-authors"><u>Soper, J.</u>, Guzman, C., Kumpel, E., Tobiason, J.</span><span class="pub-journal"><em>Journal of Hydrology</em>, 603(B), 127005 · <a href="#">doi</a></span></div>
+
+    <div class="pub-year">2020</div>
+    <div class="pub-item"><span class="pub-title">From Data to Decisions: Understanding information flows within regulatory water quality monitoring programs</span><span class="pub-authors">Kumpel, E., MacLeod, C., Stuart, K., Cock-Esteb, A., Khush, R., Peletz, R.</span><span class="pub-journal"><em>npj Clean Water</em>, 3 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Evaluating the impact of sampling design on drinking water quality monitoring program outcomes</span><span class="pub-authors"><u>da Luz, N.</u>, Kumpel, E.</span><span class="pub-journal"><em>Water Research</em> · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Comparing utility-reported hours of piped water supply to households' experiences</span><span class="pub-authors"><u>Rawas, F.</u>, Bain, R., Kumpel, E.</span><span class="pub-journal"><em>npj Clean Water</em>, 3(1) · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">How we assess water safety: A critical review of sanitary inspection and water quality analysis</span><span class="pub-authors">Kelly, E., Cronk, R., Kumpel, E., Howard, G., Bartram, J.</span><span class="pub-journal"><em>Science of the Total Environment</em>, 718 · <a href="#">doi</a></span></div>
+
+    <div class="pub-year">2019</div>
+    <div class="pub-item"><span class="pub-title">From intermittent to continuous water supply: A multi-dimensional evaluation in Hubli-Dharwad, Karnataka</span><span class="pub-authors">Ray, I., Billava, N., Burt, Z., Colford, J., Ercumen, A., Jayaramu, K.P., Kumpel, E., et al.</span><span class="pub-journal"><em>Economic and Political Weekly</em>, 53(49) · <a href="#">doi</a></span></div>
+
+    <div class="pub-year">2018</div>
+    <div class="pub-item"><span class="pub-title">Dry Pipes: Associations between Utility Performance and Intermittent Piped Water Supply in LMICs</span><span class="pub-authors">Kaminsky, J., Kumpel, E.</span><span class="pub-journal"><em>Water</em>, 10(8), 1032 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Measuring the impacts of Water Safety Plans in the Asia-Pacific Region</span><span class="pub-authors">Kumpel, E.<sup>c</sup>, Delaire, C., Peletz, R.<sup>c</sup>, et al.</span><span class="pub-journal"><em>International Journal of Environmental Research and Public Health</em>, 15(6), 1223 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Pathways to sustainability: A fuzzy-set qualitative comparative analysis of rural water supply programs</span><span class="pub-authors">Marks, S., Kumpel, E., Guo, J., Bartram, J., Davis, J.</span><span class="pub-journal"><em>Journal of Cleaner Production</em>, 205, 789–798 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Why do water quality monitoring programs succeed or fail? A QCA of regulated testing in sub-Saharan Africa</span><span class="pub-authors">Peletz, R., Kisiangani, J., Bonham, M., Ronoh, P., Delaire, C., Kumpel, E., Marks, S., Khush, R.</span><span class="pub-journal"><em>International Journal of Hygiene and Environmental Health</em>, 221(6), 907–920 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Efficacy of microbial sampling recommendations and practices in sub-Saharan Africa</span><span class="pub-authors">Taylor, D.J., Peletz, R., Khush, R., Kumpel, E.</span><span class="pub-journal"><em>Water Research</em>, 134, 115–124 · <a href="#">doi</a></span></div>
+
+    <div class="pub-year">2017</div>
+    <div class="pub-item"><span class="pub-title">Estimating infection risks and the global burden of diarrheal disease attributable to intermittent water supply using QMRA</span><span class="pub-authors">Bivins, A., Sumner, T., Kumpel, E., Howard, G., Cumming, O., Ross, I., Nelson, K., Brown, J.</span><span class="pub-journal"><em>Environmental Science and Technology</em>, 51(13), 7542–7551 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">How much will it cost to monitor microbial drinking water quality in sub-Saharan Africa?</span><span class="pub-authors">Delaire, C., Peletz, R., Kumpel, E., Kisiangani, J., Bain, R., Khush, R.</span><span class="pub-journal"><em>Environmental Science and Technology</em>, 51(11), 5869–5878 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Measuring household consumption and waste in unmetered, intermittent piped water systems</span><span class="pub-authors">Kumpel, E., Woelfe-Erskine, C., Ray, I., Nelson, K.</span><span class="pub-journal"><em>Water Resources Research</em>, 53 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Seasonal variation in drinking and domestic water sources and quality in Port Harcourt, Nigeria</span><span class="pub-authors">Kumpel, E., Cock-Esteb, A., Duret, M., de Waal, D., Khush, R.</span><span class="pub-journal"><em>American Journal of Tropical Medicine and Hygiene</em>, 96(2), 437–445 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Can sanitary surveys replace water quality testing? Evidence from Kisii, Kenya</span><span class="pub-authors">Misati, A., Ogendi, G., Peletz, R., Khush, R., Kumpel, E.</span><span class="pub-journal"><em>International Journal of Environmental Research and Public Health</em>, 14(2) · <a href="#">doi</a></span></div>
+
+    <div class="pub-year">2016</div>
+    <div class="pub-item"><span class="pub-title">Intermittent Water Supply: Prevalence, Practice, and Microbial Water Quality</span><span class="pub-authors">Kumpel, E., Nelson, K.</span><span class="pub-journal"><em>Environmental Science &amp; Technology</em>, 50(2) · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">A systems approach to climate, water and diarrhea in Hubli-Dharwad, India</span><span class="pub-authors">Mellor, J., Kumpel, E., Ercumen, A., Zimmerman, J.</span><span class="pub-journal"><em>Environmental Science &amp; Technology</em>, 50(23) · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Assessing drinking water quality and water safety management in sub-Saharan Africa using regulated monitoring data</span><span class="pub-authors">Kumpel, E., Peletz, R., Bonham, M., Khush, R.</span><span class="pub-journal"><em>Environmental Science &amp; Technology</em>, 50(20), 10869–10876 · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">Urban water services in fragile states: drinking water sources and quality in Port Harcourt, Nigeria and Monrovia, Liberia</span><span class="pub-authors">Kumpel, E., Peletz, R., Albert, J., de Waal, D., Hirn, M., et al.</span><span class="pub-journal"><em>American Journal of Tropical Medicine and Hygiene</em> · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">To what extent is drinking water tested in sub-Saharan Africa? A comparative analysis of regulated water quality monitoring</span><span class="pub-authors">Peletz, R., Kumpel, E., Bonham, M., Rahman, Z., Khush, R.</span><span class="pub-journal"><em>International Journal of Environmental Research and Public Health</em>, 13(3) · <a href="#">doi</a></span></div>
+
+    <div class="pub-year">2015</div>
+    <div class="pub-item"><span class="pub-title">Upgrading a piped water supply from intermittent to continuous delivery and association with waterborne illness: A matched cohort study in urban India</span><span class="pub-authors">Ercumen, A., Arnold, B.F., Kumpel, E., Burt, Z., Ray, I., Nelson, K., Colford, J.M.</span><span class="pub-journal"><em>PLoS Medicine</em>, 12(10) · <a href="#">doi</a></span></div>
+    <div class="pub-item"><span class="pub-title">When are mobile phones useful for water quality data collection? An analysis of data flows and ICT applications among regulated monitoring institutions in sub-Saharan Africa</span><span class="pub-authors">Kumpel, E., Peletz, R., Bonham, M., Fay, A., Cock-Esteb, A., Khush, R.</span><span class="pub-journal"><em>International Journal of Environmental Research and Public Health</em>, 12(9) · <a href="#">doi</a></span></div>
+
+    <div class="pub-year">2014</div>
+    <div class="pub-item"><span class="pub-title">Mechanisms affecting water quality in an intermittent piped water supply</span><span class="pub-authors">Kumpel, E., Nelson, K.</span><span class="pub-journal"><em>Environmental Science &amp; Technology</em>, 48(5), 2766–2775 · <a href="#">doi</a></span></div>
+
+    <div class="pub-year">2013</div>
+    <div class="pub-item"><span class="pub-title">Comparing microbial water quality in an intermittent and continuous piped water supply</span><span class="pub-authors">Kumpel, E., Nelson, K.</span><span class="pub-journal"><em>Water Research</em>, 47(14), 5176–5188 · <a href="#">doi</a></span></div>
+
+  </div><!-- /pub-year -->
+
+  <!-- BY TOPIC -->
+  <div class="pub-view" id="pub-topic">
+    <div class="topic-nav">
+      <a href="#topic-iws">Intermittent water supply</a>
+      <a href="#topic-wq">Water quality source-to-tap</a>
+      <a href="#topic-storage">Household water storage</a>
+      <a href="#topic-mapping">Infrastructure mapping</a>
+      <a href="#topic-small">Small systems &amp; treatment</a>
+      <a href="#topic-monitoring">Water quality monitoring programs</a>
+      <a href="#topic-global">Global water access</a>
+    </div>
+
+    <div class="topic-section" id="topic-iws">
+      <h3>Intermittent water supply</h3>
+      <div class="pub-item"><span class="pub-title">Intermittent Water Supply: Prevalence, Practice, and Microbial Water Quality</span><span class="pub-authors">Kumpel, E., Nelson, K. (2016)</span><span class="pub-journal"><em>Environmental Science &amp; Technology</em>, 50(2)</span></div>
+      <div class="pub-item"><span class="pub-title">Mechanisms affecting water quality in an intermittent piped water supply</span><span class="pub-authors">Kumpel, E., Nelson, K. (2014)</span><span class="pub-journal"><em>Environmental Science &amp; Technology</em>, 48(5)</span></div>
+      <div class="pub-item"><span class="pub-title">Comparing microbial water quality in an intermittent and continuous piped water supply</span><span class="pub-authors">Kumpel, E., Nelson, K. (2013)</span><span class="pub-journal"><em>Water Research</em>, 47(14)</span></div>
+      <div class="pub-item"><span class="pub-title">Estimating infection risks and the global burden of diarrheal disease attributable to intermittent water supply using QMRA</span><span class="pub-authors">Bivins, A., Sumner, T., Kumpel, E., et al. (2017)</span><span class="pub-journal"><em>Environmental Science and Technology</em>, 51(13)</span></div>
+      <div class="pub-item"><span class="pub-title">Measuring household consumption and waste in unmetered, intermittent piped water systems</span><span class="pub-authors">Kumpel, E., Woelfe-Erskine, C., Ray, I., Nelson, K. (2017)</span><span class="pub-journal"><em>Water Resources Research</em>, 53</span></div>
+      <div class="pub-item"><span class="pub-title">Dry Pipes: Associations between Utility Performance and Intermittent Piped Water Supply</span><span class="pub-authors">Kaminsky, J., Kumpel, E. (2018)</span><span class="pub-journal"><em>Water</em>, 10(8)</span></div>
+      <div class="pub-item"><span class="pub-title">From intermittent to continuous water supply: A multi-dimensional evaluation in Hubli-Dharwad</span><span class="pub-authors">Ray, I., Billava, N., Kumpel, E., et al. (2019)</span><span class="pub-journal"><em>Economic and Political Weekly</em></span></div>
+      <div class="pub-item"><span class="pub-title">Upgrading a piped water supply from intermittent to continuous delivery and association with waterborne illness</span><span class="pub-authors">Ercumen, A., Arnold, B.F., Kumpel, E., et al. (2015)</span><span class="pub-journal"><em>PLoS Medicine</em>, 12(10)</span></div>
+      <div class="pub-item"><span class="pub-title">Intermittent and continuous water supply and water access in India during COVID-19</span><span class="pub-authors">Kumpel, E., Billava, N., Nayak, N., Ercumen, A. (2021)</span><span class="pub-journal"><em>Journal of Water and Health</em>, 20(1)</span></div>
+      <div class="pub-item"><span class="pub-title">Comparing utility-reported hours of piped water supply to households' experiences</span><span class="pub-authors"><u>Rawas, F.</u>, Bain, R., Kumpel, E. (2020)</span><span class="pub-journal"><em>npj Clean Water</em></span></div>
+      <div class="pub-item"><span class="pub-title">Water supply interruptions are associated with more frequent stressful behaviors and emotions but mitigated by predictability</span><span class="pub-authors">Thomson, P., Pearson, A., Kumpel, E., et al. (2024)</span><span class="pub-journal"><em>Environmental Science and Technology</em>, 58(16)</span></div>
+      <div class="pub-item"><span class="pub-title">Intermittent versus continuous (24×7) water supply system: empirical findings from Karnataka, India</span><span class="pub-authors">Panchamukhi, P., Billava, N., Kumpel, E., et al. (2025)</span><span class="pub-journal"><em>Review of Development and Change</em>, 30(2)</span></div>
+      <div class="pub-item"><span class="pub-title">A systems approach to climate, water and diarrhea in Hubli-Dharwad, India</span><span class="pub-authors">Mellor, J., Kumpel, E., Ercumen, A., Zimmerman, J. (2016)</span><span class="pub-journal"><em>Environmental Science &amp; Technology</em>, 50(23)</span></div>
+    </div>
+
+    <div class="topic-section" id="topic-wq">
+      <h3>Water quality source-to-tap</h3>
+      <div class="pub-item"><span class="pub-title">Seasonal Total Coliform Dynamics in a Drinking Water Reservoir</span><span class="pub-authors"><u>Veras, C.E.</u>, Tobiason, J., et al., Kumpel, E. (2025)</span><span class="pub-journal"><em>Water Research</em>, 284(15)</span></div>
+      <div class="pub-item"><span class="pub-title">Moving beyond the silos of opportunistic pathogen and disinfection byproduct research</span><span class="pub-authors">Lee, S., Sun, Y., et al., Kumpel, E. (2025)</span><span class="pub-journal"><em>Environmental Science and Technology</em>, 59(18)</span></div>
+      <div class="pub-item"><span class="pub-title">Impacts of wastewater intrusion on disinfection byproduct formation: an experimental study</span><span class="pub-authors"><u>Roberts, T.</u>, Kumpel, E., et al. (2025)</span><span class="pub-journal"><em>PLOS Water</em>, 4(4)</span></div>
+      <div class="pub-item"><span class="pub-title">Disinfection Byproducts in Intermittent Piped Water Supplies</span><span class="pub-authors"><u>Roberts, T.</u>, Reckhow, D., Kumpel, E., Chavarria*, K. (2024)</span><span class="pub-journal"><em>ACS ES&amp;T Water</em>, 3(12)</span></div>
+      <div class="pub-item"><span class="pub-title">Water Lead Levels in Massachusetts Schools and Early Education and Childcare Facilities</span><span class="pub-authors"><u>Amery, L.</u>, Tobiason, J., Kumpel, E. (2023)</span><span class="pub-journal"><em>AWWA Water Science</em></span></div>
+      <div class="pub-item"><span class="pub-title">Methods and Uncertainty in Predictions of Arsenic Exposure and Health Outcomes for Private Well Users in Massachusetts</span><span class="pub-authors"><u>Amery, A.</u>, Tobiason, J., Kumpel, E. (2025)</span><span class="pub-journal"><em>Environmental Science &amp; Technology</em></span></div>
+      <div class="pub-item"><span class="pub-title">Assessment of Contaminants in a Drinking Water Supply Watershed</span><span class="pub-authors"><u>Marques, A.</u>, <u>Veras, C.</u>, Kumpel, E., et al. (2023)</span><span class="pub-journal"><em>International Soil and Water Conservation Research</em></span></div>
+      <div class="pub-item"><span class="pub-title">Long-term analysis of road salt loading and transport in a rural drinking water reservoir watershed</span><span class="pub-authors"><u>Soper, J.</u>, Guzman, C., Kumpel, E., Tobiason, J. (2021)</span><span class="pub-journal"><em>Journal of Hydrology</em>, 603(B)</span></div>
+      <div class="pub-item"><span class="pub-title">Drinking Water Quality Test Kits for Home Use in the United States</span><span class="pub-authors"><u>D'Andrea, L.</u>, Kumpel, E. (2025)</span><span class="pub-journal"><em>Journal of Water and Health</em></span></div>
+    </div>
+
+    <div class="topic-section" id="topic-storage">
+      <h3>Household water storage</h3>
+      <div class="pub-item"><span class="pub-title">Optimizing Household Water Decisions for Managing Intermittent Water Supply in Mexico City</span><span class="pub-authors"><u>Wunderlich, S.</u>, Freeman, S., Galindo, L., Brown, C., Kumpel, E. (2021)</span><span class="pub-journal"><em>Environmental Science &amp; Technology</em>, 55(12)</span></div>
+    </div>
+
+    <div class="topic-section" id="topic-mapping">
+      <h3>Infrastructure mapping</h3>
+      <div class="pub-item"><span class="pub-title">Look Out Below: Predicting Wastewater Infrastructure Service Type at the Land Parcel Scale</span><span class="pub-authors">da Luz, N.*, Taneja, J., Kumpel, E. (2025)</span><span class="pub-journal"><em>ACS ES&amp;T Engineering</em></span></div>
+      <div class="pub-item"><span class="pub-title">Graph Neural Networks for Predicting Wastewater Service Type at a Land Parcel Level</span><span class="pub-authors">Imanirakiza, S., et al., Kumpel, E., Taneja, J. (2025)</span><span class="pub-journal">NeurIPS 2025 Workshop UrbanAI</span></div>
+    </div>
+
+    <div class="topic-section" id="topic-small">
+      <h3>Small systems &amp; treatment options</h3>
+      <div class="pub-item"><span class="pub-title">Comparing the economic, environmental, and exposure impacts of options for compliance in very small water systems</span><span class="pub-authors">Lane, K.*, Tobiason, J., Reckhow, D., Kumpel, E. (2025)</span><span class="pub-journal"><em>Environmental Research: Infrastructure and Sustainability</em>, 5</span></div>
+      <div class="pub-item"><span class="pub-title">Triple Bottom Line Approach for Comparing POU/POE to Centralized Water Treatment</span><span class="pub-authors">Lane, K.*, Reckhow, D., Tobiason, J., Kumpel, E. (2023)</span><span class="pub-journal"><em>AWWA Water Science</em></span></div>
+      <div class="pub-item"><span class="pub-title">Effective First Flush Volumes in Rainwater Catchment Systems</span><span class="pub-authors"><u>Charlebois, B.</u>, Reckhow, D., Wittbold, P., Kumpel, E. (2023)</span><span class="pub-journal"><em>AQUA</em>, 72(5)</span></div>
+      <div class="pub-item"><span class="pub-title">A critical review of the global use and context of trucked water as a potable water supply</span><span class="pub-authors">Lane, K.*, Kumpel, E. (2023)</span><span class="pub-journal"><em>ACS ES&amp;T Water</em></span></div>
+    </div>
+
+    <div class="topic-section" id="topic-monitoring">
+      <h3>Water quality monitoring programs</h3>
+      <div class="pub-item"><span class="pub-title">Water quality monitoring with purpose: Using a novel framework and leveraging long-term data</span><span class="pub-authors"><u>da Luz, N.</u>, Tobiason, J., Kumpel, E. (2021)</span><span class="pub-journal"><em>Science of the Total Environment</em>, 818</span></div>
+      <div class="pub-item"><span class="pub-title">Evaluating the impact of sampling design on drinking water quality monitoring program outcomes</span><span class="pub-authors"><u>da Luz, N.</u>, Kumpel, E. (2020)</span><span class="pub-journal"><em>Water Research</em></span></div>
+      <div class="pub-item"><span class="pub-title">From Data to Decisions: Understanding information flows within regulatory water quality monitoring programs</span><span class="pub-authors">Kumpel, E., MacLeod, C., Stuart, K., Cock-Esteb, A., Khush, R., Peletz, R. (2020)</span><span class="pub-journal"><em>npj Clean Water</em></span></div>
+      <div class="pub-item"><span class="pub-title">Assessing drinking water quality and water safety management in sub-Saharan Africa using regulated monitoring data</span><span class="pub-authors">Kumpel, E., Peletz, R., Bonham, M., Khush, R. (2016)</span><span class="pub-journal"><em>Environmental Science &amp; Technology</em>, 50(20)</span></div>
+      <div class="pub-item"><span class="pub-title">To what extent is drinking water tested in sub-Saharan Africa?</span><span class="pub-authors">Peletz, R., Kumpel, E., et al. (2016)</span><span class="pub-journal"><em>International Journal of Environmental Research and Public Health</em></span></div>
+      <div class="pub-item"><span class="pub-title">Why do water quality monitoring programs succeed or fail? A QCA of regulated testing in sub-Saharan Africa</span><span class="pub-authors">Peletz, R., Kisiangani, J., Kumpel, E., et al. (2018)</span><span class="pub-journal"><em>International Journal of Hygiene and Environmental Health</em></span></div>
+      <div class="pub-item"><span class="pub-title">Efficacy of microbial sampling recommendations and practices in sub-Saharan Africa</span><span class="pub-authors">Taylor, D.J., Peletz, R., Khush, R., Kumpel, E. (2018)</span><span class="pub-journal"><em>Water Research</em>, 134</span></div>
+      <div class="pub-item"><span class="pub-title">How much will it cost to monitor microbial drinking water quality in sub-Saharan Africa?</span><span class="pub-authors">Delaire, C., Peletz, R., Kumpel, E., et al. (2017)</span><span class="pub-journal"><em>Environmental Science and Technology</em>, 51(11)</span></div>
+      <div class="pub-item"><span class="pub-title">How we assess water safety: A critical review of sanitary inspection and water quality analysis</span><span class="pub-authors">Kelly, E., Cronk, R., Kumpel, E., Howard, G., Bartram, J. (2020)</span><span class="pub-journal"><em>Science of the Total Environment</em>, 718</span></div>
+      <div class="pub-item"><span class="pub-title">Can sanitary surveys replace water quality testing? Evidence from Kisii, Kenya</span><span class="pub-authors">Misati, A., Ogendi, G., Peletz, R., Khush, R., Kumpel, E. (2017)</span><span class="pub-journal"><em>International Journal of Environmental Research and Public Health</em></span></div>
+      <div class="pub-item"><span class="pub-title">Measuring the impacts of Water Safety Plans in the Asia-Pacific Region</span><span class="pub-authors">Kumpel, E.<sup>c</sup>, Delaire, C., Peletz, R.<sup>c</sup>, et al. (2018)</span><span class="pub-journal"><em>International Journal of Environmental Research and Public Health</em>, 15(6)</span></div>
+    </div>
+
+    <div class="topic-section" id="topic-global">
+      <h3>Global water access</h3>
+      <div class="pub-item"><span class="pub-title">Drinking water accessibility typologies in low- and middle-income countries</span><span class="pub-authors">Chung, H., Kumpel, E., Oke, J. (2023)</span><span class="pub-journal"><em>Environmental Research Letters</em>, 18(2)</span></div>
+      <div class="pub-item"><span class="pub-title">The Future of Piped Water</span><span class="pub-authors">Milman, A., Kumpel, E., Lane*, K. (2022)</span><span class="pub-journal"><em>Water International</em></span></div>
+      <div class="pub-item"><span class="pub-title">A critical review of the global use and context of trucked water as a potable water supply</span><span class="pub-authors">Lane, K.*, Kumpel, E. (2023)</span><span class="pub-journal"><em>ACS ES&amp;T Water</em></span></div>
+      <div class="pub-item"><span class="pub-title">Water, sanitation, and hygiene in rural Alaska: a scoping review</span><span class="pub-authors">Thelamaque, N.*, Kumpel, E., et al.</span><span class="pub-journal">In review</span></div>
+      <div class="pub-item"><span class="pub-title">Urban water services in fragile states: Port Harcourt, Nigeria and Monrovia, Liberia</span><span class="pub-authors">Kumpel, E., Peletz, R., Albert, J., et al. (2016)</span><span class="pub-journal"><em>American Journal of Tropical Medicine and Hygiene</em></span></div>
+      <div class="pub-item"><span class="pub-title">Seasonal variation in drinking and domestic water sources and quality in Port Harcourt, Nigeria</span><span class="pub-authors">Kumpel, E., Cock-Esteb, A., Duret, M., et al. (2017)</span><span class="pub-journal"><em>American Journal of Tropical Medicine and Hygiene</em>, 96(2)</span></div>
+      <div class="pub-item"><span class="pub-title">Pathways to sustainability: A fuzzy-set QCA of rural water supply programs</span><span class="pub-authors">Marks, S., Kumpel, E., Guo, J., Bartram, J., Davis, J. (2018)</span><span class="pub-journal"><em>Journal of Cleaner Production</em>, 205</span></div>
+    </div>
+  </div><!-- /pub-topic -->
+
+</div>
+
+
+<!-- PROJECTS -->
+<div class="page" id="page-projects">
+  <h1>Projects</h1>
+  <p class="muted" style="margin-bottom:2.5rem;">Current and past funded research projects.</p>
+  <!--
+  ============================================================
+  PROJECTS — two sections: Current and Past Projects
+
+  TO ADD A PROJECT, copy a project-card block and paste it
+  inside the relevant project-grid div. Fill in:
+    - project-img: replace placeholder text with <img src="images/photo.jpg" alt="description">
+      when you have a photo, or leave as [ photo — description ] for now
+    - h3: project title
+    - proj-meta: funder · years
+    - p: description
+    - project-links: citation links (use href="#" as placeholder)
+
+  TO MOVE A PROJECT from Current to Past:
+    Cut the project-card block and paste it into the past-grid section.
+
+  Template:
+    <div class="project-card">
+      <div class="project-img">[ photo — description ]</div>
+      <h3>Project Title</h3>
+      <p class="proj-meta">Funder · Years</p>
+      <p>Description here.</p>
+      <div class="project-links"><a href="#">Author et al. YEAR</a></div>
+    </div>
+
+  TO ADD A PHOTO later: replace the project-img div contents with:
+    <img src="images/filename.jpg" alt="brief description">
+  ============================================================
+  -->
+
+  <div class="proj-section-title">Current</div>
+  <div class="project-grid">
+
+    <div class="project-card">
+      <div class="project-img">[ photo — household storage tank, India ]</div>
+      <h3>Household Water Storage</h3>
+      <p class="proj-meta">NSF CAREER · 2024–2029</p>
+      <p>Examines how storage practices shape microbial water quality and whether interventions can convert household tanks from a contamination risk into a reliable buffer. Combines lab studies, field studies, and modeling. Field sites include India, Mexico City, and Kenya.</p>
+      <div class="project-links"><a href="#">Wunderlich et al. 2021</a></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — IWS fieldwork, India ]</div>
+      <h3>Intermittent Water Supply</h3>
+      <p class="proj-meta">Fulbright-Nehru / IIT-Bombay · 2025–2026</p>
+      <p>Field studies across Indian cities measuring IWS characteristics, predictability, and water quality, and how supply variability affects household coping strategies and health outcomes. Active sites: Hubli-Dharwad, Nashik, Solapur, Mumbai, Navi Mumbai.</p>
+      <div class="project-links"><a href="#">Thomson et al. 2024</a><a href="https://doi.org/10.21203/rs.3.rs-7519884/v1">Tajanpure et al. 2025 (preprint)</a></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — parcel map / GIS ]</div>
+      <h3>Mapping Wastewater and Water Infrastructure</h3>
+      <p class="proj-meta">California State Water Board · MassDEP · 2022–2026</p>
+      <p>Developing machine learning methods to predict water and wastewater service type at the land parcel scale — filling critical data gaps for equity assessment and policy. Working with state agencies in Massachusetts, California, North Carolina, and the Gulf States.</p>
+      <div class="project-links"><a href="#">da Luz, Taneja, Kumpel 2025</a><a href="#">NeurIPS UrbanAI 2025</a></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — reservoir, Massachusetts ]</div>
+      <h3>Source Water Quality</h3>
+      <p class="proj-meta">Massachusetts DCR · MWRA · 2018–ongoing</p>
+      <p>Long-term monitoring of water quality in DCR reservoirs serving the greater Boston area. Studies contaminant dynamics, road salt impacts, watershed land use, and seasonal variability in microbial and chemical indicators. Partnership with DCR Division of Water Supply Protection.</p>
+      <div class="project-links"><a href="#">Veras et al. 2025</a><a href="#">Marques et al. 2023</a><a href="#">Soper et al. 2021</a></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — water quality lab / DBP analysis ]</div>
+      <h3>Water Quality in Distribution Systems</h3>
+      <p class="proj-meta">EPA (CO-DOWN Consortium) · ASEE Postdoctoral Fellowship · 2021–2026</p>
+      <p>Examining how distribution system conditions — wastewater intrusion, source water variation, and intermittency — affect disinfection byproduct formation and microbial communities. Includes lab-scale pipeloop experiments, field sampling, and analysis of regulatory compliance data.</p>
+      <div class="project-links"><a href="#">Roberts et al. 2025</a><a href="#">Roberts et al. 2024</a></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — Massachusetts water systems ]</div>
+      <h3>Safe Drinking Water Act Technical Assistance (MassDEP)</h3>
+      <p class="proj-meta">Massachusetts Department of Environmental Protection · 2021–2027 · ~$7.2M</p>
+      <p>Comprehensive technical assistance to <a href="https://www.mass.gov/topics/drinking-water" target="_blank">MassDEP</a>'s Drinking Water Program across multiple interagency service agreements. Supports small water system compliance, PFAS and emerging contaminants in small and disadvantaged communities, drinking water data infrastructure, and well mapping. Partners include Tobiason, da Luz, and McBeath.</p>
+      <div class="project-links">
+        <a href="https://www.mass.gov/drinking-water" target="_blank">MassDEP Drinking Water</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — school drinking water fountain ]</div>
+      <h3>Lead in Schools &amp; Lead Service Line Programs (MassDEP)</h3>
+      <p class="proj-meta">Massachusetts Department of Environmental Protection · 2022–2026 · ~$2.2M</p>
+      <p>Two parallel programs supporting Massachusetts utilities and regulators on lead in drinking water. The Lead in Schools/EECF program supports testing and remediation in K-12 schools and early education facilities statewide. The lead service line program assists small and non-transient water systems with LSL inventory development and replacement planning. Research outputs include statewide lead data analysis and predictive modeling of LSL locations.</p>
+      <div class="project-links">
+        <a href="#">Amery et al. 2023</a>
+        <a href="https://www.mass.gov/lead-drinking-water" target="_blank">MassDEP Lead Program</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — point-of-use filter ]</div>
+      <h3>Point-of-Use and Point-of-Entry Treatment for Small Systems</h3>
+      <p class="proj-meta">Water Quality Research Foundation · 2020–2025</p>
+      <p>Comparing POU/POE treatment to centralized options for small system SDWA compliance using a triple-bottom-line framework — economic, environmental, and exposure costs and benefits. Reviews the current state of POU/POE technology and regulatory pathways.</p>
+      <div class="project-links"><a href="#">Lane et al. 2023</a><a href="#">Lane et al. 2025</a><a href="#">Chavarria et al. (in review)</a></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — rural Alaska community ]</div>
+      <h3>Water and Sanitation in Rural Alaska</h3>
+      <p class="proj-meta">NSF NNA · 2023–2026</p>
+      <p>Community-engaged research on water and sanitation infrastructure, challenges, and resilience in remote Alaska Native communities facing climate-driven change.</p>
+      <div class="project-links"><a href="#">Thelamaque et al. (in review)</a></div>
+    </div>
+
+  </div>
+
+  <div class="proj-section-title" style="margin-top:1rem;">Past Projects</div>
+  <div class="project-grid past-grid">
+
+    <div class="project-card">
+      <div class="project-img">[ photo — water supply, India ]</div>
+      <h3>Upgrading Intermittent to Continuous Water Supply in Hubli-Dharwad</h3>
+      <p class="proj-meta">NSF · UC Berkeley · 2009–2016</p>
+      <p>Multi-dimensional evaluation of the conversion from intermittent to 24×7 piped water supply in Hubli-Dharwad, Karnataka. Covered water quality, household water use, health outcomes, and governance.</p>
+      <div class="project-links"><a href="#">Kumpel &amp; Nelson 2016</a><a href="#">Ercumen et al. 2015</a><a href="#">Ray et al. 2019</a></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — pipeloop lab setup ]</div>
+      <h3>Lab-Scale IWS Experiments</h3>
+      <p class="proj-meta">NSF CBET · 2018–2023</p>
+      <p>Designed and operated a pilot-scale pipeloop to experimentally characterize how supply intermittency and pressure variation affect contamination intrusion, microbial communities, and DBP formation.</p>
+      <div class="project-links"><a href="#">Roberts et al. 2024</a></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — Mexico City water tank ]</div>
+      <h3>Household Water Management in Mexico City</h3>
+      <p class="proj-meta">World Bank · NSF · 2018–2021</p>
+      <p>How households in Mexico City cope with severe intermittent supply through water storage, treatment, and sourcing decisions. Combined survey data, water quality testing, and decision modeling.</p>
+      <div class="project-links"><a href="#">Wunderlich et al. 2021</a></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — water quality testing, sub-Saharan Africa ]</div>
+      <h3>Water Quality Monitoring Programs</h3>
+      <p class="proj-meta">While at the Aquaya Institute · 2013–2018</p>
+      <p>Assessed coverage, quality, and information flows of regulatory water quality monitoring programs across sub-Saharan Africa, including field work in Kenya, Nigeria, Senegal, and Liberia.</p>
+      <div class="project-links"><a href="#">Kumpel et al. 2016 ES&amp;T</a><a href="#">Peletz et al. 2018</a></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — water safety plan, Asia-Pacific ]</div>
+      <h3>Water Safety Plan Impact Assessment, Asia-Pacific</h3>
+      <p class="proj-meta">While at the Aquaya Institute · WHO · 2014–2016</p>
+      <p>Measured the impact of Water Safety Plans implemented across the Asia-Pacific region on water quality outcomes and utility practices. Report submitted to WHO.</p>
+      <div class="project-links"><a href="#">Kumpel et al. 2018</a></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">[ photo — Port Harcourt water access ]</div>
+      <h3>Urban Water Services in Fragile States</h3>
+      <p class="proj-meta">While at the Aquaya Institute · World Bank · 2013–2015</p>
+      <p>Assessment of drinking water sources, quality, and access in Port Harcourt, Nigeria and Monrovia, Liberia — cities with severely degraded piped infrastructure.</p>
+      <div class="project-links"><a href="#">Kumpel et al. 2016 AJTMH</a></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- RESOURCES -->
+<div class="page" id="page-resources">
+  <h1>Resources</h1>
+  <!--
+  ============================================================
+  RESOURCES — fellowship and job lists
+  To add a link, copy a <li> line and paste it in the right section.
+  Template: <li><a href="URL">Name of fellowship/resource</a></li>
+  ============================================================
+  -->
+
+  <h2>Graduate fellowships</h2>
+  <p>A selection of fellowship opportunities for prospective and current graduate students in environmental engineering and related fields.</p>
+  <ul style="font-size:0.85rem; line-height:1.8;">
+    <li><a href="https://www.nsfgrfp.org/">NSF Graduate Research Fellowship Program (GRFP)</a></li>
+    <li><a href="https://ndseg.org/">National Defense Science and Engineering Graduate Fellowship (NDSEG)</a></li>
+    <li><a href="http://www.switzernetwork.org/become-fellow">Switzer Environmental Fellowship</a></li>
+    <li><a href="https://hertzfoundation.org/fellowships/welcome-to-the-fellowship/">Hertz Fellowship</a></li>
+    <li><a href="https://www.pdsoros.org/">Paul and Daisy Soros Fellowship for New Americans</a></li>
+    <li><a href="https://www.aauw.org/resources/programs/fellowships-grants/current-opportunities/american/">AAUW American Fellowships</a></li>
+    <li><a href="https://www.rotary.org/en/our-programs/scholarships">Rotary Foundation Global Grant Scholarships</a></li>
+    <li><a href="https://us.fulbrightonline.org/">Fulbright U.S. Student Program</a></li>
+    <li><a href="http://www.ofid.org/SCHOLARSHIPS">OPEC Fund for International Development (OFID) Scholarship</a></li>
+  </ul>
+
+  <h2>Postdoctoral fellowships</h2>
+  <ul style="font-size:0.85rem; line-height:1.8;">
+    <li><a href="http://www.loreal.com/en/usa/pages/group/fwis.aspx">L'Oréal USA For Women in Science</a></li>
+    <li><a href="http://sites.nationalacademies.org/pga/rap/">NRC Research Associateship Programs</a></li>
+    <li><a href="http://www.slb.com/careers/students/scholarships/fim.aspx">Schlumberger Foundation Faculty for the Future</a></li>
+    <li><a href="https://www.asee.org/fellowships">ASEE Postdoctoral Fellowship</a></li>
+  </ul>
+
+  <h2>WASH jobs and opportunities</h2>
+  <ul style="font-size:0.85rem; line-height:1.8;">
+    <li><a href="https://docs.google.com/spreadsheets/d/1_BKYJY3Jx-EhVfJGILPZ3FRQxqWqTEcjEGxdJzVkzuM/edit#gid=0">WASH Jobs Google Sheet</a></li>
+    <li><a href="https://visibilitystem.africa/">Visibility STEM Africa</a></li>
+  </ul>
+</div>
+
+
+<!-- JOIN -->
+<div class="page" id="page-join">
+  <h1>Join</h1>
+  <p style="max-width:620px; margin-bottom:2rem;">We welcome students and postdoctoral researchers interested in water quality, water systems, and water equity. Our work spans field, lab, and computational methods across a range of international and domestic contexts.</p>
+
+  <h2>Ph.D. students</h2>
+  <p>We are generally interested in recruiting PhD students with backgrounds in environmental engineering, civil engineering, public health, or related fields. Current priorities include household water storage, intermittent water supply in India, water quality in distribution systems, and infrastructure mapping. Prospective students should apply to the <a href="https://www.umass.edu/engineering/cee">UMass CEE graduate program</a>. If you would like to reach out directly, please send a message that describes your specific research interests, relevant background and experience, and why you want to work with our group in particular — what draws you to our specific projects and approach. I receive many inquiries and cannot respond to all of them, but I make an effort to reply to emails that are personally written and make a genuine connection with our work.</p>
+
+  <h2>Postdoctoral researchers</h2>
+  <p>Candidates with experience in water quality measurement, microbial ecology, machine learning applied to infrastructure, or related areas are encouraged to reach out. We can work together to identify fellowship opportunities where relevant.</p>
+
+  <h2>Undergraduate researchers</h2>
+  <p>UMass undergraduates interested in independent study or honors research are welcome to reach out, particularly those with relevant coursework in environmental engineering or data science.</p>
+
+  <h2>Contact</h2>
+  <p>Emily Kumpel · <a href="https://www.umass.edu/engineering/about/directory/emily-kumpel">ekumpel@umass.edu</a><br>
+  Department of Civil and Environmental Engineering<br>
+  University of Massachusetts Amherst<br>
+  <em>Currently on sabbatical at IIT-Bombay through summer 2026.</em></p>
+</div>
+
+
+<!-- TEACHING -->
+<div class="page" id="page-teaching">
+  <h1>Teaching</h1>
+  <p class="muted" style="margin-bottom:2rem; max-width:620px;">Dr. Kumpel teaches undergraduate and graduate courses in the <a href="https://www.umass.edu/engineering/cee" target="_blank">Department of Civil and Environmental Engineering</a> at the University of Massachusetts Amherst. She has received the College of Engineering Outstanding Teaching Award (2022) and the CEE Department Tighe Faculty Teaching Award (2021).</p>
+
+  <div class="teaching-item">
+    <div class="course-code">CEE 487 / CEE 687</div>
+    <h3>Sustainability Engineering for Infrastructure Systems</h3>
+    <p class="course-meta">Undergraduate (3 cr.) / Graduate Special Topics (3 cr.) · New course</p>
+    <p>Examines sustainability concepts as applied to infrastructure systems, with a focus on water, sanitation, and energy. Students evaluate the economic, environmental, and social dimensions of infrastructure decisions using triple-bottom-line and life-cycle frameworks, and engage with case studies ranging from US small water systems to global development contexts.</p>
+  </div>
+
+  <div class="teaching-item">
+    <div class="course-code">CEE 370</div>
+    <h3>Introduction to Environmental and Water Resources Engineering</h3>
+    <p class="course-meta">Undergraduate, required (4 cr., with lab)</p>
+    <p>Core undergraduate course introducing environmental engineering fundamentals. Topics include physical, chemical, and biological principles; environmental standards and legislation; material balances and reaction kinetics; environmental chemistry and microbiology; biogeochemical cycles; water quality and water resources; air quality; and solid and hazardous waste. Prerequisite: MATH 331 and CHEM 112.</p>
+  </div>
+
+  <div class="teaching-item">
+    <div class="course-code">CEE 547</div>
+    <h3>Pipes and Pits: Water, Sanitation, and Global Development</h3>
+    <p class="course-meta">Graduate elective (3 cr.) · New course</p>
+    <p>Graduate seminar examining water supply and sanitation infrastructure in low- and middle-income countries. Concepts include infrastructure for drinking water and sanitation provision in urban and rural areas; health-related impacts of water and sanitation including waterborne pathogens, transmission routes, prevention and treatment; and sustainability, reliability, and the non-health dimensions of water and sanitation services. Open to advanced undergraduates with permission.</p>
+  </div>
+
+  <div class="teaching-item">
+    <div class="course-code">CEE 580</div>
+    <h3>Drinking Water for All: A Community-Engaged Learning Class</h3>
+    <p class="course-meta">Graduate elective (3 cr.) · Co-taught with Reckhow and Milman</p>
+    <p>Community-engaged graduate course pairing students with small and disadvantaged water systems in Massachusetts to address real regulatory and operational challenges. Students work directly with utilities, apply engineering and policy frameworks to safe drinking water compliance, and develop practical deliverables for partner systems. Co-instructors include Dave Reckhow and Anita Milman.</p>
+  </div>
+
+</div>
+
+<div style="border-top: 1px solid var(--border); padding: 1.8rem 0; margin-top: 4rem; font-size: 0.77rem; color: var(--faint);">Water Systems Lab · Civil &amp; Environmental Engineering · University of Massachusetts Amherst</div>
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('nav a').forEach(function(a) { a.classList.remove('active'); });
+  var page = document.getElementById('page-' + id);
+  if (page) page.classList.add('active');
+  var navItem = document.getElementById('nav-' + id);
+  if (navItem) navItem.classList.add('active');
+}
+
+function showPubView(view, el) {
+  document.querySelectorAll('.pub-view').forEach(function(v) { v.classList.remove('active'); });
+  document.querySelectorAll('.pub-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.getElementById('pub-' + view).classList.add('active');
+  el.classList.add('active');
+}
+
+showPage('home');
+</script>
+</body>
+</html>
