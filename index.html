@@ -169,20 +169,20 @@
     .hl-card span { font-size:0.76rem; color:var(--muted); line-height:1.5; }
 
     /* PEOPLE */
-    .uva-person { display:flex; gap:1.5rem; margin-bottom:2.2rem; align-items:flex-start; }
-    .uva-photo {
+    .umass-person { display:flex; gap:1.5rem; margin-bottom:2.2rem; align-items:flex-start; }
+    .umass-photo {
       flex:0 0 110px; width:110px; height:110px;
       background: var(--card-bg);
       border:1px solid var(--border);
       display:flex; align-items:center; justify-content:center; overflow:hidden;
     }
-    .uva-photo img { width:100%; height:100%; object-fit:cover; }
-    .uva-photo svg { width:48px; height:48px; }
-    .uva-info { flex:1; }
-    .uva-info h3 { margin:0 0 0.2rem; font-size:1rem; font-family: 'Lora', serif; font-weight: 500; }
-    .uva-role { font-style:italic; color:var(--muted); font-size:0.81rem; margin:0 0 0.45rem; line-height:1.55; }
-    .uva-info p { font-size:0.83rem; margin:0 0 0.3rem; line-height:1.6; }
-    .uva-section {
+    .umass-photo img { width:100%; height:100%; object-fit:cover; }
+    .umass-photo svg { width:48px; height:48px; }
+    .umass-info { flex:1; }
+    .umass-info h3 { margin:0 0 0.2rem; font-size:1rem; font-family: 'Lora', serif; font-weight: 500; }
+    .umass-role { font-style:italic; color:var(--muted); font-size:0.81rem; margin:0 0 0.45rem; line-height:1.55; }
+    .umass-info p { font-size:0.83rem; margin:0 0 0.3rem; line-height:1.6; }
+    .umass-section {
       font-size:0.73rem; text-transform:uppercase; letter-spacing:0.09em;
       color:var(--muted); font-weight:500; margin:2.5rem 0 1rem;
       border-bottom:1px solid var(--border); padding-bottom:0.4rem;
@@ -345,7 +345,7 @@
       .approach-grid { grid-template-columns: 1fr 1fr; }
       .project-grid { grid-template-columns: 1fr; }
       .nav-links { gap: 0.8rem; }
-      .uva-person { flex-direction: column; }
+      .umass-person { flex-direction: column; }
     }
   </style>
 </head>
@@ -371,8 +371,8 @@
     <div>
       <h1>Water Systems Lab at UMass Amherst</h1>
       <p style="font-family:'Lora',serif; font-size:1.05rem; font-style:italic; color:var(--muted); margin-bottom:1.5rem; margin-top:-0.3rem;">Water for the Common Wealth</p>
-      <p>The Water Systems Lab, led by <a href="https://www.umass.edu/engineering/about/directory/emily-kumpel">Dr. Emily Kumpel</a> in <a href="https://www.umass.edu/engineering/cee">Civil and Environmental Engineering</a> at the University of Massachusetts Amherst, is a research group studying water infrastructure, systems, and people.</p>
-      <p>Our work connects technical measurements of water quality and supply reliability to public health outcomes, regulatory practice, and policy.</p>
+      <p>The Water Systems Lab, led by <a href="https://www.umass.edu/engineering/about/directory/emily-kumpel">Dr. Emily Kumpel</a> in <a href="https://www.umass.edu/engineering/cee">Civil and Environmental Engineering</a> at the University of Massachusetts Amherst, is a research group studying water infrastructure, systems, service delivery, and communities across diverse urban and rural contexts.</p>
+      <p>Our work connects technical measurements of water quality and supply reliability to public health outcomes, regulatory practicies, and policies.</p>
       <div style="width:100%; aspect-ratio:16/9; background:var(--card-bg); border:1px solid var(--border); margin-top:1.2rem; overflow:hidden;"><img src="images/image-group2.jpg" alt="Water Systems Lab group" style="width:100%; height:100%; object-fit:cover;"></div>
     </div>
     <div class="home-meta">
@@ -627,18 +627,18 @@
   ============================================================
   PEOPLE — sections: Current Team, then Alumni table
 
-  TO ADD A PERSON, copy a uva-person block and paste it
+  TO ADD A PERSON, copy a umass-person block and paste it
   in the right section. Fill in name, role, and bio.
 
-  TO ADD A PHOTO: replace the uva-photo div contents with:
+  TO ADD A PHOTO: replace the umass-photo div contents with:
     <img src="images/firstname-lastname.jpg" alt="Name">
 
   Template:
-    <div class="uva-person">
-      <div class="uva-photo"><svg>...placeholder icon...</svg></div>
-      <div class="uva-info">
+    <div class="umass-person">
+      <div class="umass-photo"><svg>...placeholder icon...</svg></div>
+      <div class="umass-info">
         <h3>Full Name</h3>
-        <p class="uva-role">Title, Department, Year–<br>
+        <p class="umass-role">Title, Department, Year–<br>
         Website</p>
         <p>Bio text here.</p>
       </div>
@@ -648,21 +648,21 @@
     Copy a <tr> row and fill in Name, Role, Years, Research, Current position.
 
   TO MOVE someone from Current to Alumni:
-    Delete their uva-person block and add a row to the alumni table.
+    Delete their umass-person block and add a row to the alumni table.
   ============================================================
   -->
 
   <h2 style="margin-top:0">Current Team</h2>
   <hr style="border:none;border-top:1px solid var(--border);margin-bottom:1.5rem;">
 
-  <div class="uva-person">
-    <div class="uva-photo"><img src="images/headshot-emily.jpg" alt="Emily Kumpel"></div>
-    <div class="uva-info">
+  <div class="umass-person">
+    <div class="umass-photo"><img src="images/headshot-emily.jpg" alt="Emily Kumpel"></div>
+    <div class="umass-info">
       <h3>Emily Kumpel</h3>
-      <p class="uva-role">Associate Professor, Civil &amp; Environmental Engineering, UMass Amherst<br>
+      <p class="umass-role">Associate Professor, Civil &amp; Environmental Engineering, UMass Amherst<br>
       Visiting Associate Professor, IIT-Bombay (Fulbright-Nehru Scholar, 2025–26)<br>
       <a href="http://scholar.google.com/citations?user=3p8_njYAAAAJ">Google Scholar</a> ·
-      <a href="https://umass-my.sharepoint.com/:b:/r/personal/ekumpel_umass_edu/Documents/PublicSharing/Kumpel-CV.pdf?csf=1&web=1&e=FcDA4P">CV</a></p>
+      <a href="https://umass-my.sharepoint.com/:b:/g/personal/ekumpel_umass_edu/IQDVi7TcwqewQoZpcw0Nxm5WAbkWj7G4GWIaTKsBBSh_3i4?e=5D2kiA">CV</a></p>
       <p>Ph.D., Civil and Environmental Engineering, UC Berkeley, 2013<br>
       M.S., Civil and Environmental Engineering, UC Berkeley, 2007<br>
       B.S., Mechanical Engineering, Johns Hopkins University, 2006</p>
@@ -670,83 +670,95 @@
     </div>
   </div>
 
-  <h3 class="uva-section">Postdoctoral Scholars</h3>
+  <h3 class="umass-section">Postdoctoral Scholars</h3>
 
-  <div class="uva-person">
-    <div class="uva-photo"><img src="images/headshot-nathalie.jpg" alt="Nathalie Thelamaque"></div>
-    <div class="uva-info">
+  <div class="umass-person">
+    <div class="umass-photo"><img src="images/headshot-nathalie.jpg" alt="Nathalie Thelamaque"></div>
+    <div class="umass-info">
       <h3>Dr. Nathalie Thelamaque</h3>
-      <p class="uva-role">Postdoctoral Scholar, CEE, UMass Amherst, 2024–<br>
+      <p class="umass-role">Postdoctoral Scholar, CEE, UMass Amherst, 2024–<br>
       <a href="https://scholar.google.com/citations?hl=en&user=8K9_gnIAAAAJ">Google Scholar</a></p>
             <p>Nathalie's research focuses on water and sanitation conditions in rural Alaska, using qualitative research methods to understand water access and equity in remote Alaska Native communities.</p>
     </div>
   </div>
 
-  <h3 class="uva-section">Ph.D. Students</h3>
+  <h3 class="umass-section">Ph.D. Students</h3>
 
-  <div class="uva-person">
-    <div class="uva-photo"><img src="images/headshot-ciara.jpg" alt="Ciara Little"></div>
-    <div class="uva-info">
+  <div class="umass-person">
+    <div class="umass-photo"><img src="images/headshot-ciara.jpg" alt="Ciara Little"></div>
+    <div class="umass-info">
       <h3>Ciara Little</h3>
-      <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2021–</p>
+      <p class="umass-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2021–</p>
       <p>Ciara's research develops classification approaches for US public water systems and modeling frameworks to understand intermittent water supply systems.</p>
     </div>
   </div>
 
-  <div class="uva-person">
-    <div class="uva-photo"><img src="images/headshot-gabriel.jpg" alt="Gabriel"></div>
-    <div class="uva-info">
+  <div class="umass-person">
+    <div class="umass-photo"><img src="images/headshot-gabriel.jpg" alt="Gabriel"></div>
+    <div class="umass-info">
       <h3>Gabriel Mesole</h3>
-      <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2021–<br>
+      <p class="umass-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2021–<br>
       <a href="https://www.linkedin.com/in/gabrielmesole">LinkedIn</a></p>
       <p>Gabriel's research examines antimicrobial resistance in drinking water distribution systems and seasonal coliform dynamics in drinking water reservoirs.</p>
     </div>
   </div>
 
-  <div class="uva-person">
-    <div class="uva-photo"><img src="images/headshot-poonam.jpeg" alt="Poonam"></div>
-    <div class="uva-info">
+  <div class="umass-person">
+    <div class="umass-photo"><img src="images/headshot-poonam.jpeg" alt="Poonam"></div>
+    <div class="umass-info">
       <h3>Poonam Tajanpure</h3>
-      <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2022–</p>
+      <p class="umass-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2022–</p>
       <p>Poonam studies the unpredictability of intermittent water supply and its associations with child health outcomes in urban India, as well as lead in schools and lead service line predictions.</p>
     </div>
   </div>
 
-  <div class="uva-person">
-    <div class="uva-photo"><img src="images/headshot-kevine.jpg" alt="Kevine"></div>
-    <div class="uva-info">
+  <div class="umass-person">
+    <div class="umass-photo"><img src="images/headshot-kevine.jpg" alt="Kevine"></div>
+    <div class="umass-info">
       <h3>Kevine Odira</h3>
-      <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2023–</p>
+      <p class="umass-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2023–</p>
       <p>Kevine's research examines household water storage and reliability under intermittent supply.</p>
     </div>
   </div>
 
-  <div class="uva-person">
-    <div class="uva-photo"><img src="images/headshot-mitchel.jpg" alt="Mitchel"></div>
-    <div class="uva-info">
+  <div class="umass-person">
+    <div class="umass-photo"><img src="images/headshot-mitchel.jpg" alt="Mitchel"></div>
+    <div class="umass-info">
       <h3>Mitchel Ghantous <span style="font-weight:300;font-size:0.85em">(co-advised)</span></h3>
-      <p class="uva-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2024–</p>
+      <p class="umass-role">Ph.D. Student, Civil &amp; Environmental Engineering, 2024–</p>
       <p>Mitchel's research focuses on disinfection byproducts in drinking water systems.</p>
     </div>
   </div>
 
-  <h3 class="uva-section">Affiliated Researchers</h3>
+ <h3 class="umass-section">Project Staff</h3>
 
-  <div class="uva-person">
-    <div class="uva-photo"><img src="images/headshot-nelson.jpg" alt="Nelson da Luz"></div>
-    <div class="uva-info">
+  <div class="umass-person">
+    <div class="umass-photo"><img src="images/headshot-jacqueline.jpg" alt="Jacqueline White"></div>
+    <div class="umass-info">
+      <h3>Jacqueline White</h3>
+      <p class="umass-role">Drinking Water Assistance Program Associate (Research Fellow), CEE, UMass Amherst<br>
+      <p>Jacqueline completed her Master's in the group in 2025 and her research focused on lead contamination and remediation in childcares. She currently works as a Research Fellow for UMass on MassDEP Drinking Water Projects, providing support to programs ranging from testing for lead in schools and childcares to supporting public water systems.</p>
+    </div>
+  </div>
+
+
+  <h3 class="umass-section">Affiliated Researchers</h3>
+
+  <div class="umass-person">
+    <div class="umass-photo"><img src="images/headshot-nelson.jpg" alt="Nelson da Luz"></div>
+    <div class="umass-info">
       <h3>Dr. Nelson da Luz</h3>
-      <p class="uva-role">Research Assistant Professor, CEE, UMass Amherst<br>
+      <p class="umass-role">Research Assistant Professor, CEE, UMass Amherst<br>
       <a href="https://scholar.google.com/citations?hl=en&user=aTmaxOMAAAAJ">Google Scholar</a></p>
       <p>Nelson's research focuses on water and wastewater system mapping, drinking water quality monitoring program design, and data-driven approaches to water system management. He completed his Ph.D. with the Water Systems Lab in 2022 and remains an active collaborator.</p>
     </div>
   </div>
 
-  <div class="uva-person">
-    <div class="uva-photo"><img src="images/headshot-karina.jpg" alt="Karina Chavarria"></div>
-    <div class="uva-info">
+  <div class="umass-person">
+    <div class="umass-photo"><img src="images/headshot-karina.jpg" alt="Karina Chavarria"></div>
+    <div class="umass-info">
       <h3>Dr. Karina Chavarria</h3>
-      <p class="uva-role">Independent Consultant · Postdoctoral Scholar (ASEE Fellow) in the group, 2021–2024<br>
+      <p class="umass-role">Independent Consultant · Postdoctoral Scholar (ASEE Fellow) in the group, 2021–2024<br>
       <a href="https://scholar.google.com/citations?user=D4ZtTdkAAAAJ&hl=en&oi=sra">Google Scholar</a></p>
       <p>Karina was a postdoctoral scholar in the group from 2021–2024 and continues as a collaborator and independent consultant. Her work focuses on water quality in water systems, including microbial communities from source to tap, disinfection byproducts (DBPs), antimicrobial resistance (AMR), and water quality under intermittent water supply, and the current state of point-of-use and point-of-entry treatment in the United States.</p>
     </div>
@@ -772,7 +784,7 @@
       <tr><td>Mariam Alkattan</td><td>MS</td><td>2021</td><td>Water quality in intermittent supply — model pipeloop</td><td>—</td></tr>
       <tr><td>Savannah Wunderlich</td><td>MS</td><td>2020</td><td>Household water decisions under IWS in Mexico City</td><td>—</td></tr>
       <tr><td>LeighAnn D'Andrea</td><td>MS</td><td>2019</td><td>Drinking water quality test kits for citizen scientists</td><td>Project Programmer, US Air Force</td></tr>
-      <tr><td>Jacqueline White</td><td>BS, MS</td><td>2024, 2025</td><td>—</td><td>—</td></tr>
+      <tr><td>Jacqueline White</td><td>BS, MS</td><td>2024, 2025</td><td> Lead contamination in childcare drinking water in MA, Evaluating remediation options for residential childcares</td><td>Research Fellow, UMass/MassDEP Projects</td></tr>
       <tr><td>Ella Prabhakar</td><td>BS</td><td>2025</td><td>Water quality while in storage</td><td>—</td></tr>
       <tr><td>Mitchel Ghantous</td><td>BS</td><td>2019</td><td>—</td><td>Ph.D. student, UMass Amherst</td></tr>
       <tr><td>Farah Rawas</td><td>BS</td><td>2018</td><td>Utility-reported vs. household-experienced supply hours</td><td>MS, University of British Columbia</td></tr>
